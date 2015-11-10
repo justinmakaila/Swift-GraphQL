@@ -8,143 +8,145 @@
 
 import Foundation
 
-/*:
-## GraphQLRenderer
+public struct GraphQL {
+    public struct Field {
+        public let name: String
+        public let arguments: [String: AnyObject]
+        
+        public let fields: [GraphQL.Field]
+        public let aliases: [String: GraphQL.Field]
+        
+        var isRootNode: Bool {
+            return name.isEmpty
+        }
 
-Handles rendering of `GraphQLNode` and `GraphQLQuery` instances into `String`s.
-*/
-// TODO: This should handle pretty printing too!
-private struct GraphQLRenderer {
-    /**
-        Renders a `GraphQLNode` to a String. Suitable to be passed to a GraphQL server
-     */
-    static func renderGraphQLNode(node: GraphQLNode) -> String {
-        let indentationString = ""
-        var queryString = ""
-        
-        queryString += indentationString
-        
-        if let name = node.name {
-            queryString += name
+        public init(name: String, arguments: [String: AnyObject] = [:], fields: [GraphQL.Field] = [], aliases: [String: GraphQL.Field] = [:]) {
+            for field in fields {
+                assert(!field.isRootNode, "You cannot add a root field as a child of another field")
+            }
+            
+            self.name = name
+            self.arguments = arguments
+            self.fields = fields
+            self.aliases = aliases
         }
-        
-        if node.arguments.count > 0 {
-            queryString += "("
-            
-            queryString += node.arguments.reduce([]) { value, argument in
-                return value + ["\(argument.0): \(argument.1)"]
-            }.joinWithSeparator(", ")
-            
-            queryString += ")"
-        }
-        
-        if node.properties.count > 0 {
-            queryString += "{"
-            
-            queryString += node.properties.reduce([]) { value, property in
-                return value + ["\(property)"]
-            }.joinWithSeparator(",")
-            
-            queryString += "}"
-        }
-        
-        return queryString
     }
-
-    /**
-        Renders a `GraphQLQuery` to a String. Suitable to be passed to a GraphQL server
-     */
-    static func renderGraphQLQuery(query: GraphQLQuery) -> String {
-        var queryString = "query \(query.name)"
+    
+    public struct Query {
+        public let name: String
+        public let fields: [GraphQL.Field]
         
-        if query.fields.count > 0 {
-            queryString += "{"
-            
-            queryString += query.fields.reduce([]) { value, property in
-                return value + ["\(property.0): \(property.1)"]
-            }.joinWithSeparator("")
-            
-            queryString += "}"
+        public init(name: String, fields: [GraphQL.Field]) {
+            self.name = name
+            self.fields = fields
         }
+    }
+    
+    public struct Mutation {
+        public let name: String
+        public let arguments: [String: AnyObject]
+        public let fields: [GraphQL.Field]
         
-        return queryString
+        public init(name: String, arguments: [String: AnyObject] = [:], fields: [GraphQL.Field]) {
+            self.name = name
+            self.arguments = arguments
+            self.fields = fields
+        }
     }
 }
 
-/*:
-## GraphQLNode
-Represents a node in a GraphQL query.
-*/
-struct GraphQLNode {
-    let name: String?
-    let arguments: [String: AnyObject]
-    let properties: [GraphQLNode]
-    
-    var isRootNode: Bool {
-        return name?.isEmpty ?? true
-    }
-    
-    init(name: String, arguments: [String : AnyObject] = [:], properties: [GraphQLNode] = []) {
-        for node in properties {
-            assert(!node.isRootNode, "You cannot include a root node, or a node with an empty name as a child of another node.")
-        }
-        
-        self.name = name
-        self.arguments = arguments
-        self.properties = properties
-    }
-}
 
-extension GraphQLNode: StringLiteralConvertible {
-    init(stringLiteral value: StringLiteralType) {
+
+// MARK - GraphQL.Node Extensions
+
+extension GraphQL.Field: StringLiteralConvertible {
+    public init(stringLiteral value: StringLiteralType) {
         self.init(name: value)
     }
     
-    init(extendedGraphemeClusterLiteral value: StringLiteralType) {
+    public init(extendedGraphemeClusterLiteral value: StringLiteralType) {
         self.init(name: value)
     }
     
-    init(unicodeScalarLiteral value: StringLiteralType) {
+    public init(unicodeScalarLiteral value: StringLiteralType) {
         self.init(name: value)
     }
 }
 
-extension GraphQLNode: ArrayLiteralConvertible {
-    init(arrayLiteral elements: GraphQLNode...) {
-        self.init(name: "", properties: elements)
+extension GraphQL.Field: ArrayLiteralConvertible {
+    public init(arrayLiteral elements: GraphQL.Field...) {
+        self.init(name: "", fields: elements)
     }
 }
 
-extension GraphQLNode: CustomStringConvertible, CustomDebugStringConvertible {
-    var description: String {
-        return GraphQLRenderer.renderGraphQLNode(self)
+extension GraphQL.Field: CustomStringConvertible, CustomDebugStringConvertible {
+    public var description: String {
+        return "\(name)\(renderArgumentsList(arguments))\(renderSelectionSet(fields, aliases: aliases))"
     }
     
-    var debugDescription: String {
-        return "GraphQLNode(\(description))"
+    public var debugDescription: String {
+        return "GraphQL.Field(\(description))"
     }
 }
 
-/*:
-## GraphQLQuery
-Represents a query in a GraphQL query.
-*/
-struct GraphQLQuery {
-    let name: String
-    let fields: [String: GraphQLNode]
+
+
+// MARK: - GraphQL.Query Extensions
+
+extension GraphQL.Query: CustomStringConvertible, CustomDebugStringConvertible {
+    public var description: String {
+        return "query \(name) \(renderSelectionSet(fields))"
+    }
     
-    init(name: String, fields: [String: GraphQLNode]) {
-        self.name = name
-        self.fields = fields
+    public var debugDescription: String {
+        return "GraphQL.Query(\(description))"
     }
 }
 
-extension GraphQLQuery: CustomStringConvertible, CustomDebugStringConvertible {
-    var description: String {
-        return GraphQLRenderer.renderGraphQLQuery(self)
+
+
+// MARK: - GraphQL.Mutation Extensions
+
+extension GraphQL.Mutation: CustomStringConvertible, CustomDebugStringConvertible {
+    public var description: String {
+        return "mutation \(name)\(renderArgumentsList(arguments))\(renderSelectionSet(fields))"
     }
     
-    var debugDescription: String {
-        return "GraphQLQuery(\(description))"
+    public var debugDescription: String {
+        return "GraphQL.Mutation(\(description))"
     }
+}
+
+
+
+// MARK: - String Rendering Helpers
+
+func renderArgumentsList(arguments: [String: AnyObject] = [:]) -> String {
+    let argumentsList = arguments.reduce([]) { value, argument in
+        return value + ["\(argument.0): \(argument.1)"]
+    }
+    
+    if !argumentsList.isEmpty {
+        return "(\(argumentsList.joinWithSeparator(", ")))"
+    }
+    
+    return ""
+}
+
+func renderSelectionSet(fields: [GraphQL.Field] = [], aliases: [String: GraphQL.Field] = [:]) -> String {
+    let fieldsList = fields.reduce([]) { value, field in
+        return value + ["\(field)"]
+    }
+    
+    let aliasList = aliases.reduce([]) { value, alias in
+        return value + ["\(alias.0): \(alias.1)"]
+    }
+    
+    if !fieldsList.isEmpty || !aliasList.isEmpty {
+        let selectionList = fieldsList + aliasList
+        let selectionSet = selectionList.joinWithSeparator(" ")
+        return " { \(selectionSet) }"
+    }
+    
+    return ""
 }
