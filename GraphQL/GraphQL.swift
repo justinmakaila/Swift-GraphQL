@@ -73,6 +73,8 @@ extension GraphQL.Field: StringLiteralConvertible {
     }
 }
 
+// ???: Should this whole idea be moved to a separate object? Perhaps GraphQL.Document to encapsulate the fact that a `Document` is a container of fields?
+// It would eliminate the `isRootNode` assertion in the field initializer, and complete the idea that you can't have a field with no name in a `Query` or `Mutation`
 extension GraphQL.Field: ArrayLiteralConvertible {
     public init(arrayLiteral elements: GraphQL.Field...) {
         self.init(name: "", fields: elements)
