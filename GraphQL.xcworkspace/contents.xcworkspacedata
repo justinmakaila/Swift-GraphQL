@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:GraphQL.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GraphQLExample/GraphQLExample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:GraphQLPlayground.playground">
+   </FileRef>
+</Workspace>
