@@ -8,7 +8,43 @@
 
 import Foundation
 
+public protocol GraphQLQueryType {
+    var queryString: String { get }
+}
+
 public struct GraphQL {
+    public struct Document {
+        public let operations: [GraphQLQueryType]
+        
+        init(operations: [GraphQLQueryType]) {
+            self.operations = operations
+        }
+    }
+    
+    public struct Query {
+        public let name: String
+        public let arguments: [String: AnyObject]
+        public let fields: [GraphQL.Field]
+        
+        public init(name: String, arguments: [String: AnyObject], fields: [GraphQL.Field]) {
+            self.name = name
+            self.arguments = arguments
+            self.fields = fields
+        }
+    }
+    
+    public struct Mutation {
+        public let name: String
+        public let arguments: [String: AnyObject]
+        public let fields: [GraphQL.Field]
+        
+        public init(name: String, arguments: [String: AnyObject] = [:], fields: [GraphQL.Field]) {
+            self.name = name
+            self.arguments = arguments
+            self.fields = fields
+        }
+    }
+    
     public struct Field {
         public let name: String
         public let arguments: [String: AnyObject]
@@ -31,27 +67,28 @@ public struct GraphQL {
             self.aliases = aliases
         }
     }
-    
-    public struct Query {
-        public let name: String
-        public let fields: [GraphQL.Field]
-        
-        public init(name: String, fields: [GraphQL.Field]) {
-            self.name = name
-            self.fields = fields
-        }
+}
+
+
+// MARK: - GraphQL.Document Extensions
+
+extension GraphQL.Document: ArrayLiteralConvertible {
+    public init(arrayLiteral elements: GraphQLQueryType...) {
+        self.init(operations: elements)
+    }
+}
+
+extension GraphQL.Document: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
+    public var queryString: String {
+        return description
     }
     
-    public struct Mutation {
-        public let name: String
-        public let arguments: [String: AnyObject]
-        public let fields: [GraphQL.Field]
-        
-        public init(name: String, arguments: [String: AnyObject] = [:], fields: [GraphQL.Field]) {
-            self.name = name
-            self.arguments = arguments
-            self.fields = fields
-        }
+    public var description: String {
+        return renderDocument(operations)
+    }
+    
+    public var debugDescription: String {
+        return "GraphQL.Document(\(description))"
     }
 }
 
@@ -73,15 +110,11 @@ extension GraphQL.Field: StringLiteralConvertible {
     }
 }
 
-// ???: Should this whole idea be moved to a separate object? Perhaps GraphQL.Document to encapsulate the fact that a `Document` is a container of fields?
-// It would eliminate the `isRootNode` assertion in the field initializer, and complete the idea that you can't have a field with no name in a `Query` or `Mutation`
-extension GraphQL.Field: ArrayLiteralConvertible {
-    public init(arrayLiteral elements: GraphQL.Field...) {
-        self.init(name: "", fields: elements)
+extension GraphQL.Field: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
+    public var queryString: String {
+        return description
     }
-}
-
-extension GraphQL.Field: CustomStringConvertible, CustomDebugStringConvertible {
+    
     public var description: String {
         return "\(name)\(renderArgumentsList(arguments))\(renderSelectionSet(fields, aliases: aliases))"
     }
@@ -95,9 +128,13 @@ extension GraphQL.Field: CustomStringConvertible, CustomDebugStringConvertible {
 
 // MARK: - GraphQL.Query Extensions
 
-extension GraphQL.Query: CustomStringConvertible, CustomDebugStringConvertible {
+extension GraphQL.Query: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
+    public var queryString: String {
+        return description
+    }
+    
     public var description: String {
-        return "query \(name) \(renderSelectionSet(fields))"
+        return "query \(name)\(renderOperationArgumentsList(arguments))\(renderSelectionSet(fields))"
     }
     
     public var debugDescription: String {
@@ -109,9 +146,13 @@ extension GraphQL.Query: CustomStringConvertible, CustomDebugStringConvertible {
 
 // MARK: - GraphQL.Mutation Extensions
 
-extension GraphQL.Mutation: CustomStringConvertible, CustomDebugStringConvertible {
+extension GraphQL.Mutation: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
+    public var queryString: String {
+        return description
+    }
+    
     public var description: String {
-        return "mutation \(name)\(renderArgumentsList(arguments))\(renderSelectionSet(fields))"
+        return "mutation \(name)\(renderOperationArgumentsList(arguments)) { \(name)\(renderParameterizedArgumentsList(arguments))\(renderSelectionSet(fields)) }"
     }
     
     public var debugDescription: String {
@@ -123,9 +164,61 @@ extension GraphQL.Mutation: CustomStringConvertible, CustomDebugStringConvertibl
 
 // MARK: - String Rendering Helpers
 
+func renderDocument(operations: [GraphQLQueryType]) -> String {
+    let operationsList = operations.reduce([]) { value, operation in
+        return value + ["\(operation)"]
+    }
+    
+    if !operationsList.isEmpty {
+        return "{ \(operationsList.joinWithSeparator("\n")) }"
+    }
+    
+    return ""
+}
+
+func renderParameterizedArgumentsList(arguments: [String: AnyObject]) -> String {
+    let argumentsList = arguments.reduce([String]()) { value, argument in
+        return value + ["\(argument.0): $\(argument.0)"]
+    }
+    
+    if !argumentsList.isEmpty {
+        return "(\(argumentsList.joinWithSeparator(", ")))"
+    }
+    
+    return ""
+}
+
+func renderOperationArgumentsList(arguments: [String: AnyObject]) -> String {
+    let argumentsList = arguments.reduce([String]()) { value, argument in
+        var typeName: String = ""
+        switch argument.1 {
+        case is String:
+            typeName = "String!"
+        case is Bool:
+            typeName = "Bool!"
+        case is Int:
+            typeName = "Int!"
+        case is Double:
+            typeName = "Double!"
+        case is Float:
+            typeName = "Float!"
+        default:
+            assert(false, "Type is invalid!")
+        }
+        
+        return value + ["$\(argument.0): \(typeName)"]
+    }
+    
+    if !argumentsList.isEmpty {
+        return "(\(argumentsList.joinWithSeparator(", ")))"
+    }
+    
+    return ""
+}
+
 func renderArgumentsList(arguments: [String: AnyObject] = [:]) -> String {
     let argumentsList = arguments.reduce([]) { value, argument in
-        return value + ["\(argument.0): \(argument.1)"]
+        return value + ["\(argument.0): \"\(argument.1)\""]
     }
     
     if !argumentsList.isEmpty {

@@ -8,68 +8,128 @@
 
 import UIKit
 import GraphQL
+import Alamofire
 
-private let CurrentTeacherId = "someTeacherId"
-private let AddStudentId = "someStudentId"
-
-private let TabtorURL = NSURL(string: "tapi.tabtor.com/graphql")!
-
-private let StudentFields: [GraphQL.Field] = [
-    "firstName",
-    "lastName",
-    "id"
-]
+private let ExampleURL = NSURL(string: "http://localhost:3000/data")!
+private let LukeSkywalkerUserId = "559645cd1a38532d14349246"
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        getClass()
-        addStudent()
+        
+        getUser(LukeSkywalkerUserId)
+        //getUserNamedQuery(LukeSkywalkerUserId)
+        //createUser("Justin")
     }
-
-    func getClass() {
-        let classQuery = GraphQL.Query(
-            name: "currentClass",
-            fields:[
+    
+    func getUser(id: String) {
+        /**
+         user(id: "\(id)") {
+            name
+            friends {
+                name
+            } 
+         }
+        */
+        let userQuery = GraphQL.Field(
+            name: "user",
+            arguments: [
+                "id": id
+            ],
+            fields: [
+                "name",
                 GraphQL.Field(
-                    name: "class",
-                    arguments: [
-                        "teacherId": CurrentTeacherId
-                    ],
+                    name: "friends",
                     fields: [
-                        GraphQL.Field(
-                            name: "students",
-                            fields: StudentFields
-                        )
+                        "name"
                     ]
                 )
             ]
         )
-        
-        debugPrint(classQuery)
-        
-        let request = NSMutableURLRequest(URL: TabtorURL, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 30)
-        request.HTTPBody = classQuery.description.dataUsingEncoding(NSUTF8StringEncoding)
+
+        let document = GraphQL.Document(arrayLiteral: userQuery)
+        let request = requestForQuery(document)
+        executeRequest(request)
     }
     
-    func addStudent() {
-        let addStudentMutation = GraphQL.Mutation(
-            name: "addStudent",
+    func getUserNamedQuery(id: String) {
+        let userQuery = GraphQL.Query(
+            name: "getUser",
             arguments: [
-                "studentId": AddStudentId
+                "id": id
             ],
             fields: [
                 GraphQL.Field(
-                    name: "student",
-                    fields: StudentFields
+                    name: "user",
+                    arguments: [
+                        "id": id
+                    ],
+                    fields: [
+                        "name"
+                    ]
                 )
+            ])
+        
+        let request = requestForQuery(userQuery)
+        executeRequest(request)
+    }
+    
+    func createUser(name: String) {
+        /*
+        mutation createUser($name: String!) {
+            createUser(name: $name) {
+                name
+                friends
+                id
+            }
+        }
+        */
+        let createUserMutation = GraphQL.Mutation(
+            name: "createUser",
+            arguments: [
+                "name": name
+            ],
+            fields: [
+                "name",
+                "id",
             ]
         )
         
-        debugPrint(addStudentMutation)
+        print(createUserMutation)
+        
+        let request = requestForQuery(createUserMutation)
+        executeRequest(request)
     }
-
 }
 
+private extension ViewController {
+    func mutableURLRequest() -> NSMutableURLRequest {
+        let request = NSMutableURLRequest(URL: ExampleURL, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 30)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        return request
+    }
+    
+    func requestForQuery(query: GraphQLQueryType, arguments: [String: AnyObject]? = nil) -> NSURLRequest {
+        let request = mutableURLRequest()
+        
+        var parameters: [String: AnyObject] = [
+            "query": query.queryString
+        ]
+        
+        if let arguments = arguments {
+            parameters["arguments"] = arguments
+        }
+        
+        return Alamofire.ParameterEncoding.URL.encode(request, parameters: parameters).0
+    }
+    
+    func executeRequest(request: NSURLRequest) {
+        Alamofire.request(request)
+            .responseJSON { response in
+                if let json = response.result.value {
+                    print(json)
+                }
+            }
+    }
+}

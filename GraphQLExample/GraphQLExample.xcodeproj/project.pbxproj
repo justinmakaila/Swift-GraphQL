@@ -17,7 +17,25 @@
 		7C9397831BF25A5E00B744D2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9397801BF25A5E00B744D2 /* Alamofire.framework */; };
 		7C9397841BF25A5E00B744D2 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9397811BF25A5E00B744D2 /* ReactiveCocoa.framework */; };
 		7C9397851BF25A5E00B744D2 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C9397821BF25A5E00B744D2 /* Result.framework */; };
+		7CBEC1ED1BF3947100CB62EF /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C9397801BF25A5E00B744D2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7CBEC1EE1BF3947100CB62EF /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C9397811BF25A5E00B744D2 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7CBEC1EF1BF3947100CB62EF /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C9397821BF25A5E00B744D2 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7CBEC1EC1BF3946900CB62EF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7CBEC1ED1BF3947100CB62EF /* Alamofire.framework in CopyFiles */,
+				7CBEC1EE1BF3947100CB62EF /* ReactiveCocoa.framework in CopyFiles */,
+				7CBEC1EF1BF3947100CB62EF /* Result.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7C6A5BB61BF11AC80086E7EB /* GraphQLExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphQLExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +119,7 @@
 				7C6A5BB21BF11AC80086E7EB /* Sources */,
 				7C6A5BB31BF11AC80086E7EB /* Frameworks */,
 				7C6A5BB41BF11AC80086E7EB /* Resources */,
+				7CBEC1EC1BF3946900CB62EF /* CopyFiles */,
 			);
 			buildRules = (
 			);
