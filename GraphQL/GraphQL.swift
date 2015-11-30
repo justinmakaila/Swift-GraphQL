@@ -1,11 +1,3 @@
-//
-//  GraphQL.swift
-//  GraphQL
-//
-//  Created by Justin Makaila on 11/6/15.
-//  Copyright © 2015 justinmakaila. All rights reserved.
-//
-
 import Foundation
 
 public protocol GraphQLQueryType {
@@ -13,6 +5,58 @@ public protocol GraphQLQueryType {
 }
 
 public struct GraphQL {
+    public typealias SelectionSet = [GraphQL.Field]
+    
+    public enum InputValueType: CustomStringConvertible {
+        case IntValue(Bool)
+        case FloatValue(Bool)
+        case StringValue(Bool)
+        case BooleanValue(Bool)
+        case EnumValue(Bool)
+        case ListValue(Bool)
+        case ObjectValue(Bool)
+        
+        public var description: String {
+            switch self {
+            case IntValue(let required):
+                return required ? "Int!" : "Int"
+            case FloatValue(let required):
+                return required ? "Float!" : "Float"
+            case StringValue(let required):
+                return required ? "String!" : "String"
+            case BooleanValue(let required):
+                return required ? "Boolean!" : "Boolean"
+            case EnumValue(let required):
+                return required ? "Enum!" : "Enum"
+            case ListValue(let required):
+                return required ? "List!" : "List"
+            case ObjectValue(let required):
+                return required ? "Object!": "Object"
+            }
+        }
+    }
+    
+    public enum OperationType: String, CustomStringConvertible {
+        // A write followed by a fetch
+        case Mutation = "mutation"
+        
+        // A ready-only fetch
+        case Query = "query"
+        
+        public var description: String {
+            return rawValue
+        }
+    }
+    
+    /**
+     Document Definition:
+        Operation Definition
+        Fragment Definition
+     
+     A GraphQL query document describes a complete file or request string received by a GraphQL service. A document contains multiple definitions of Operations and Fragments. GraphQL query documents are only executable by a server if they contain an operation. However documents which do not contain operations may still be parsed and validated to allow client to represent a single request across many documents.
+     
+     If a document contains only one operation, that operation may be unnamed or represented in the shorthand form, which omits both the query keyword and operation name. Otherwise, if a GraphQL query document contains multiple operations, each operation must be named. When submitting a query document with multiple operations to a GraphQL service, the name of the desired operation to be executed must also be provided.
+    */
     public struct Document {
         public let operations: [GraphQLQueryType]
         
@@ -21,227 +65,101 @@ public struct GraphQL {
         }
     }
     
-    public struct Query {
+    /**
+     Operation Definition:
+        OperationType Name? VariableDefinitions? Directives? SelectionSet
+     
+     There are two types of operations, as specified in `OperationType`. 
+     
+     Each operation is represented by an optional operation name and a selection set.
+    */
+    public struct Operation {
+        public let type: OperationType
         public let name: String
         public let arguments: [String: AnyObject]
-        public let fields: [GraphQL.Field]
+        public let selectionSet: SelectionSet
         
-        public init(name: String, arguments: [String: AnyObject], fields: [GraphQL.Field]) {
+        public init(type: OperationType, name: String = "", arguments: [String: AnyObject] = [:], selectionSet: SelectionSet) {
+            self.type = type
             self.name = name
             self.arguments = arguments
-            self.fields = fields
+            self.selectionSet = selectionSet
         }
     }
     
-    public struct Mutation {
-        public let name: String
-        public let arguments: [String: AnyObject]
-        public let fields: [GraphQL.Field]
-        
-        public init(name: String, arguments: [String: AnyObject] = [:], fields: [GraphQL.Field]) {
-            self.name = name
-            self.arguments = arguments
-            self.fields = fields
-        }
-    }
-    
+    /**
+     Field Definition:
+        Alias? Name Arguments? Directives? SelectionSet?
+     
+     Fields describe complex data or relationships to other data. In order to further explore this data, a field may itself contain a selection set, allowing for deeply nested requests.
+     
+     All GraphQL operations must specify their selections down to fields which return scalar values to ensure an unambiguously shaped response.
+    */
     public struct Field {
+        public let alias: String?
         public let name: String
         public let arguments: [String: AnyObject]
         
-        public let fields: [GraphQL.Field]
-        public let aliases: [String: GraphQL.Field]
+        public let selectionSet: SelectionSet
+        
+        public let fragments: [InlineFragment]
         
         var isRootNode: Bool {
             return name.isEmpty
         }
 
-        public init(name: String, arguments: [String: AnyObject] = [:], fields: [GraphQL.Field] = [], aliases: [String: GraphQL.Field] = [:]) {
-            for field in fields {
+        public init(alias: String? = nil, name: String, arguments: [String: AnyObject] = [:], selectionSet: SelectionSet = [], fragments: [InlineFragment] = []) {
+            for field in selectionSet {
                 assert(!field.isRootNode, "You cannot add a root field as a child of another field")
             }
             
+            self.alias = alias
             self.name = name
             self.arguments = arguments
-            self.fields = fields
-            self.aliases = aliases
+            self.selectionSet = selectionSet
+            self.fragments = fragments
         }
     }
-}
-
-
-// MARK: - GraphQL.Document Extensions
-
-extension GraphQL.Document: ArrayLiteralConvertible {
-    public init(arrayLiteral elements: GraphQLQueryType...) {
-        self.init(operations: elements)
-    }
-}
-
-extension GraphQL.Document: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
-    public var queryString: String {
-        return description
-    }
     
-    public var description: String {
-        return renderDocument(operations)
-    }
-    
-    public var debugDescription: String {
-        return "GraphQL.Document(\(description))"
-    }
-}
-
-
-
-// MARK - GraphQL.Node Extensions
-
-extension GraphQL.Field: StringLiteralConvertible {
-    public init(stringLiteral value: StringLiteralType) {
-        self.init(name: value)
-    }
-    
-    public init(extendedGraphemeClusterLiteral value: StringLiteralType) {
-        self.init(name: value)
-    }
-    
-    public init(unicodeScalarLiteral value: StringLiteralType) {
-        self.init(name: value)
-    }
-}
-
-extension GraphQL.Field: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
-    public var queryString: String {
-        return description
-    }
-    
-    public var description: String {
-        return "\(name)\(renderArgumentsList(arguments))\(renderSelectionSet(fields, aliases: aliases))"
-    }
-    
-    public var debugDescription: String {
-        return "GraphQL.Field(\(description))"
-    }
-}
-
-
-
-// MARK: - GraphQL.Query Extensions
-
-extension GraphQL.Query: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
-    public var queryString: String {
-        return description
-    }
-    
-    public var description: String {
-        return "query \(name)\(renderOperationArgumentsList(arguments))\(renderSelectionSet(fields))"
-    }
-    
-    public var debugDescription: String {
-        return "GraphQL.Query(\(description))"
-    }
-}
-
-
-
-// MARK: - GraphQL.Mutation Extensions
-
-extension GraphQL.Mutation: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
-    public var queryString: String {
-        return description
-    }
-    
-    public var description: String {
-        return "mutation \(name)\(renderOperationArgumentsList(arguments)) { \(name)\(renderParameterizedArgumentsList(arguments))\(renderSelectionSet(fields)) }"
-    }
-    
-    public var debugDescription: String {
-        return "GraphQL.Mutation(\(description))"
-    }
-}
-
-
-
-// MARK: - String Rendering Helpers
-
-func renderDocument(operations: [GraphQLQueryType]) -> String {
-    let operationsList = operations.reduce([]) { value, operation in
-        return value + ["\(operation)"]
-    }
-    
-    if !operationsList.isEmpty {
-        return "{ \(operationsList.joinWithSeparator("\n")) }"
-    }
-    
-    return ""
-}
-
-func renderParameterizedArgumentsList(arguments: [String: AnyObject]) -> String {
-    let argumentsList = arguments.reduce([String]()) { value, argument in
-        return value + ["\(argument.0): $\(argument.0)"]
-    }
-    
-    if !argumentsList.isEmpty {
-        return "(\(argumentsList.joinWithSeparator(", ")))"
-    }
-    
-    return ""
-}
-
-func renderOperationArgumentsList(arguments: [String: AnyObject]) -> String {
-    let argumentsList = arguments.reduce([String]()) { value, argument in
-        var typeName: String = ""
-        switch argument.1 {
-        case is String:
-            typeName = "String!"
-        case is Bool:
-            typeName = "Bool!"
-        case is Int:
-            typeName = "Int!"
-        case is Double:
-            typeName = "Double!"
-        case is Float:
-            typeName = "Float!"
-        default:
-            assert(false, "Type is invalid!")
-        }
+    /**
+     Directive Definition:
+        @ Name Arguments?
+     
+     Directives provide a way to describe alternate runtime execution and type validation behavior in a GraphQL document.
+     
+     Directives have a name along with a list of arguments which may accept values of any input type.
+     
+     Directives can be used to describe additional information for fields, fragments, and operations.
+    */
+    public struct Directive {
+        public let name: String
+        public let arguments: [String: AnyObject]
         
-        return value + ["$\(argument.0): \(typeName)"]
+        public init(name: String, arguments: [String: AnyObject] = [:]) {
+            self.name = name
+            self.arguments = arguments
+        }
     }
     
-    if !argumentsList.isEmpty {
-        return "(\(argumentsList.joinWithSeparator(", ")))"
+    /**
+     InlineFragment Definition:
+        ... TypeCondition? Directives? SelectionSet
+     
+     Fragments can be defined inline with a selection set. This is done to conditionally include fields based on their runtime type.
+     
+     Inline fragments may also be used to apply a directive to a group of fields. If the TypeCondition is omitted, an inline fragment is considered to be of the same type as the enclosing context.
+    */
+    public struct InlineFragment {
+        public let typeCondition: String?
+        public let directive: Directive?
+        public let selectionSet: SelectionSet
+        
+        public init(typeCondition: String? = nil, directive: Directive? = nil, selectionSet: SelectionSet) {
+            // TODO: Assert that `typeCondition` or `directive` is not nil
+            
+            self.typeCondition = typeCondition
+            self.directive = directive
+            self.selectionSet = selectionSet
+        }
     }
-    
-    return ""
-}
-
-func renderArgumentsList(arguments: [String: AnyObject] = [:]) -> String {
-    let argumentsList = arguments.reduce([]) { value, argument in
-        return value + ["\(argument.0): \"\(argument.1)\""]
-    }
-    
-    if !argumentsList.isEmpty {
-        return "(\(argumentsList.joinWithSeparator(", ")))"
-    }
-    
-    return ""
-}
-
-func renderSelectionSet(fields: [GraphQL.Field] = [], aliases: [String: GraphQL.Field] = [:]) -> String {
-    let fieldsList = fields.reduce([]) { value, field in
-        return value + ["\(field)"]
-    }
-    
-    let aliasList = aliases.reduce([]) { value, alias in
-        return value + ["\(alias.0): \(alias.1)"]
-    }
-    
-    if !fieldsList.isEmpty || !aliasList.isEmpty {
-        let selectionList = fieldsList + aliasList
-        let selectionSet = selectionList.joinWithSeparator(" ")
-        return " { \(selectionSet) }"
-    }
-    
-    return ""
 }
