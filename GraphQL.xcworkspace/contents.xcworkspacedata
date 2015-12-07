@@ -5,9 +5,6 @@
       location = "container:GraphQL.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:GraphQLExample/GraphQLExample.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:GraphQLPlayground.playground">
    </FileRef>
 </Workspace>

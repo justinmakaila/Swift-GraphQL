@@ -6,6 +6,7 @@ public protocol GraphQLQueryType {
 
 public struct GraphQL {
     public typealias SelectionSet = [GraphQL.Field]
+    public typealias Arguments = [String: AnyObject]
     
     public enum InputValueType: CustomStringConvertible {
         case IntValue(Bool)
@@ -76,10 +77,10 @@ public struct GraphQL {
     public struct Operation {
         public let type: OperationType
         public let name: String
-        public let arguments: [String: AnyObject]
+        public let arguments: Arguments
         public let selectionSet: SelectionSet
         
-        public init(type: OperationType, name: String = "", arguments: [String: AnyObject] = [:], selectionSet: SelectionSet) {
+        public init(type: OperationType, name: String = "", arguments: Arguments = Arguments(), selectionSet: SelectionSet) {
             self.type = type
             self.name = name
             self.arguments = arguments
@@ -108,7 +109,7 @@ public struct GraphQL {
             return name.isEmpty
         }
 
-        public init(alias: String? = nil, name: String, arguments: [String: AnyObject] = [:], selectionSet: SelectionSet = [], fragments: [InlineFragment] = []) {
+        public init(alias: String? = nil, name: String, arguments: Arguments = Arguments(), selectionSet: SelectionSet = SelectionSet(), fragments: [InlineFragment] = []) {
             for field in selectionSet {
                 assert(!field.isRootNode, "You cannot add a root field as a child of another field")
             }
@@ -133,11 +134,26 @@ public struct GraphQL {
     */
     public struct Directive {
         public let name: String
-        public let arguments: [String: AnyObject]
+        public let arguments: Arguments
         
-        public init(name: String, arguments: [String: AnyObject] = [:]) {
+        public init(name: String, arguments: Arguments = Arguments()) {
             self.name = name
             self.arguments = arguments
+        }
+    }
+    
+    public struct Fragment {
+        public let name: String
+        public let typeCondition: String
+        
+        public let directive: Directive?
+        public let selectionSet: SelectionSet
+        
+        public init(name: String, typeCondition: String, directive: Directive? = nil, selectionSet: SelectionSet) {
+            self.name = name
+            self.typeCondition = typeCondition
+            self.directive = directive
+            self.selectionSet = selectionSet
         }
     }
     
@@ -154,9 +170,19 @@ public struct GraphQL {
         public let directive: Directive?
         public let selectionSet: SelectionSet
         
-        public init(typeCondition: String? = nil, directive: Directive? = nil, selectionSet: SelectionSet) {
-            // TODO: Assert that `typeCondition` or `directive` is not nil
-            
+        public init(typeCondition: String, selectionSet: SelectionSet) {
+            self.typeCondition = typeCondition
+            self.directive = nil
+            self.selectionSet = selectionSet
+        }
+        
+        public init(directive: Directive, selectionSet: SelectionSet) {
+            self.typeCondition = nil
+            self.directive = directive
+            self.selectionSet = selectionSet
+        }
+        
+        public init(typeCondition: String, directive: Directive, selectionSet: SelectionSet) {
             self.typeCondition = typeCondition
             self.directive = directive
             self.selectionSet = selectionSet

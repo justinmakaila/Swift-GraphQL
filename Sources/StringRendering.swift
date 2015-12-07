@@ -1,16 +1,13 @@
 import Foundation
 
-//private func arrayToGraphQLListString(array: NSArray) -> String {
-//    let arrayContents = array.reduce([String](), combine: <#T##(T, AnyObject) throws -> T#>)
-//}
-//
-//private func dictionaryToGraphQLObjectString(dictionary: NSDictionary) -> String {
-//    let keyValueStrings = dictionary.reduce([], combine: { (array, keyValue) in
-//        return array
-//    })
-//    
-//    print(keyValueStrings)
-//}
+private func GraphQLJSONString(arrayOrDictionary: AnyObject) -> String? {
+    do {
+        let data = try NSJSONSerialization.dataWithJSONObject(arrayOrDictionary, options: NSJSONWritingOptions())
+        return NSString(data: data, encoding: NSUTF8StringEncoding) as? String
+    } catch {
+        return nil
+    }
+}
 
 // MARK: - String Rendering Helpers
 
@@ -24,37 +21,26 @@ internal func renderDocument(operations: [GraphQLQueryType]) -> String {
     return ""
 }
 
-internal func renderOperationArgumentsList(arguments: [String: AnyObject]) -> String {
-    let argumentsList = arguments.reduce([String]()) { $0 + ["\($1.0): \($1.1)"] }
-    
-    if !argumentsList.isEmpty {
-        return "(\(argumentsList.joinWithSeparator(", ")))"
-    }
-    
-    return ""
-}
-
 internal func renderArgumentsList(arguments: [String: AnyObject] = [:]) -> String {
-    // TODO: If `argument.1` is an array, wrap it in square brackets.
-    // TODO: If `argument.1` is a dictionary, wrap it in curly brackets.
     let argumentsList = arguments.reduce([String]()) { value, argument in
         let argumentKey = argument.0
         var argumentValue = argument.1
         
         switch argumentValue {
         case is NSArray:
-            print("Value is array. Convert to ListString")
-            // argumentValue = arrayToGraphQLListString(argumentValue as! NSArray)
+            argumentValue = GraphQLJSONString(argumentValue) ?? "[]"
         case is NSDictionary:
-            print("Value is dictionary. Convert to ObjectString")
-            //argumentValue = dictionaryToGraphQLObjectString(argumentValue as! NSDictionary)
+            argumentValue = GraphQLJSONString(argumentValue) ?? "{}"
         case is NSString:
-            // The argument value should only be set if it's not a variable.
+            // The argument value should only be wrapped if it's not prefixed by "$" (a variable).
+            // TODO: This doesn't consider passing in the type. i.e. String! vs "String!"
             if argumentValue.substringToIndex(1) != "$" {
                 argumentValue = "\"\(argumentValue)\""
             }
+        case is GraphQL.InputValueType:
+            argumentValue = "\((argumentValue as! GraphQL.InputValueType).description)"
         default:
-            print("Argument is raw type")
+            break
         }
         
         return value + ["\(argumentKey): \(argumentValue)"]

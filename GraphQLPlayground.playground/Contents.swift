@@ -22,6 +22,28 @@ let likeStoryMutation = GraphQL.Operation(type: .Mutation, selectionSet: [
 print(likeStoryMutation)
 
 /**
+.Operation(.Query, "getParent", ["id": .StringValue(true)], [
+    .Field("parent", ["id": "$id"], [
+        "id",
+        "firstName",
+        "lastName",
+        "email",
+        .Field("students", [
+            .Field("edges", [
+                .Field("node", [
+                    "id",
+                    "firstName",
+                    .Field("class", [
+                        "name",
+                        "description"
+                    ])
+                ])
+            ])
+        ])
+    ])
+])
+
+
 query getParent($id: String!) {
     parent(id: $id) {
         id
@@ -44,7 +66,7 @@ query getParent($id: String!) {
     }
 }
 */
-let getParentQuery: GraphQL.Operation = GraphQL.Operation(type: .Query, name: "getParent", arguments: ["id": GraphQL.InputValueType.StringValue(true).description], selectionSet: [
+let getParentQuery = GraphQL.Operation(type: .Query, name: "getParent", arguments: ["id": GraphQL.InputValueType.StringValue(true)], selectionSet: [
     GraphQL.Field(name: "parent", arguments: ["id": "$id"], selectionSet: [
         "id",
         "firstName",
@@ -68,6 +90,17 @@ let getParentQuery: GraphQL.Operation = GraphQL.Operation(type: .Query, name: "g
 
 print(getParentQuery)
 
+/**
+query profilePicture($id: String!) {
+    profilePicture(id: $id, size: { width: 50, height: 200 })
+}
+*/
+let profilePictureQuery = GraphQL.Operation(type: .Query, name: "profilePicture", arguments: ["$id": GraphQL.InputValueType.StringValue(true)], selectionSet: [
+    GraphQL.Field(name: "profilePicture", arguments: ["id": "$id", "size": ["width": 50, "height": 200]])
+])
+
+print(profilePictureQuery)
+
 
 /**
 query inlineFragmentTyping {
@@ -86,7 +119,7 @@ query inlineFragmentTyping {
     }
 }
 */
-let inlineFragmentTypingQuery: GraphQL.Operation = GraphQL.Operation(type: .Query, name: "inlineFragmentTyping", selectionSet: [
+let inlineFragmentTypingQuery = GraphQL.Operation(type: .Query, name: "inlineFragmentTyping", selectionSet: [
     GraphQL.Field(name: "profiles", arguments: ["handles": ["zuck", "cococola"]], selectionSet: [
         "handle"
     ], fragments: [
@@ -119,7 +152,7 @@ query inlineFragmentNoType($expandedInfo: Boolean) {
     }
 }
 */
-let inlineFragmentNoTypeQuery: GraphQL.Operation = GraphQL.Operation(type: .Query, name: "inlineFragmentNoType", arguments: ["$expandedInfo": GraphQL.InputValueType.BooleanValue(false).description], selectionSet: [
+let inlineFragmentNoTypeQuery = GraphQL.Operation(type: .Query, name: "inlineFragmentNoType", arguments: ["$expandedInfo": GraphQL.InputValueType.BooleanValue(false)], selectionSet: [
     GraphQL.Field(name: "user", arguments: ["handle": "zuck"], selectionSet: [
         "id",
         "name",
@@ -145,7 +178,7 @@ query lifetimeActivity($studentId: String!) {
     }
 }
 */
-let lifetimeActivityQuery: GraphQL.Operation = GraphQL.Operation(type: .Query, name: "lifetimeActivity", arguments: ["$studentId": GraphQL.InputValueType.StringValue(true).description], selectionSet: [
+let lifetimeActivityQuery = GraphQL.Operation(type: .Query, name: "lifetimeActivity", arguments: ["$studentId": GraphQL.InputValueType.StringValue(true)], selectionSet: [
     GraphQL.Field(name: "student", arguments: ["id": "$studentId"], selectionSet: [
         GraphQL.Field(alias: "lifetimeActivity", name: "activity", selectionSet: [
             "totalDuration",
@@ -173,3 +206,23 @@ let nodeField = GraphQL.Field(name: "node", arguments: ["id": "someIdString"], f
 ])
 
 print(nodeField)
+
+/**
+fragment standardProfilePic on User {
+    profilePic(size: 50)
+}
+*/
+let standardProfilePictureFragment = GraphQL.Fragment(name: "standardProfilePic", typeCondition: "User", selectionSet: [
+    GraphQL.Field(name: "profilePic", arguments: ["size": 50])
+])
+
+print(standardProfilePictureFragment)
+
+
+/**
+fragment friendFields on User {
+    id
+    name
+    ...standardProfilePic
+}
+*/

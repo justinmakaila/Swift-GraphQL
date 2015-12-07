@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C15C6751BEDB88C0004ACA4 /* GraphQL.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C15C6741BEDB88C0004ACA4 /* GraphQL.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7C15C67D1BEDB89F0004ACA4 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C15C67C1BEDB89F0004ACA4 /* GraphQL.swift */; };
-		7C2B5E871C0CEBB60027C874 /* StringRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B5E861C0CEBB50027C874 /* StringRendering.swift */; };
-		7C2B5E8A1C0CED870027C874 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B5E891C0CED860027C874 /* Field.swift */; };
-		7C2B5E8C1C0CEDAA0027C874 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B5E8B1C0CEDAA0027C874 /* Document.swift */; };
-		7C2B5E8E1C0CEDCB0027C874 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B5E8D1C0CEDCB0027C874 /* Operation.swift */; };
-		7C2B5E901C0CEDE40027C874 /* Directive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B5E8F1C0CEDE40027C874 /* Directive.swift */; };
-		7C2B5E921C0CEE040027C874 /* InlineFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B5E911C0CEE040027C874 /* InlineFragment.swift */; };
 		7C6A5BD81BF122F40086E7EB /* GraphQLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A5BD71BF122F40086E7EB /* GraphQLTests.swift */; };
 		7C6A5BDA1BF122F40086E7EB /* GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C15C6711BEDB88C0004ACA4 /* GraphQL.framework */; };
 		7C6A5BE31BF123100086E7EB /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6A5BE11BF123100086E7EB /* Nimble.framework */; };
 		7C6A5BE41BF123100086E7EB /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6A5BE21BF123100086E7EB /* Quick.framework */; };
 		7C6A5BE61BF154090086E7EB /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C6A5BE11BF123100086E7EB /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C6A5BE71BF154090086E7EB /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C6A5BE21BF123100086E7EB /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C7B81E31C15E1A100691A04 /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B81D81C15E1A100691A04 /* GraphQL.swift */; };
+		7C7B81E51C15E1A100691A04 /* StringRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B81DA1C15E1A100691A04 /* StringRendering.swift */; };
+		7C7B81E61C15E1A100691A04 /* Directive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B81DC1C15E1A100691A04 /* Directive.swift */; };
+		7C7B81E71C15E1A100691A04 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B81DD1C15E1A100691A04 /* Document.swift */; };
+		7C7B81E81C15E1A100691A04 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B81DE1C15E1A100691A04 /* Field.swift */; };
+		7C7B81E91C15E1A100691A04 /* Fragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B81DF1C15E1A100691A04 /* Fragment.swift */; };
+		7C7B81EA1C15E1A100691A04 /* InlineFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B81E01C15E1A100691A04 /* InlineFragment.swift */; };
+		7C7B81EB1C15E1A100691A04 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B81E11C15E1A100691A04 /* Operation.swift */; };
+		7C7B81ED1C15E1B000691A04 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B81EC1C15E1B000691A04 /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,20 +50,21 @@
 
 /* Begin PBXFileReference section */
 		7C15C6711BEDB88C0004ACA4 /* GraphQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C15C6741BEDB88C0004ACA4 /* GraphQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphQL.h; sourceTree = "<group>"; };
-		7C15C6761BEDB88C0004ACA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C15C67C1BEDB89F0004ACA4 /* GraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
-		7C2B5E861C0CEBB50027C874 /* StringRendering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRendering.swift; sourceTree = "<group>"; };
-		7C2B5E891C0CED860027C874 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Field.swift; path = Types/Field.swift; sourceTree = "<group>"; };
-		7C2B5E8B1C0CEDAA0027C874 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Types/Document.swift; sourceTree = "<group>"; };
-		7C2B5E8D1C0CEDCB0027C874 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operation.swift; path = Types/Operation.swift; sourceTree = "<group>"; };
-		7C2B5E8F1C0CEDE40027C874 /* Directive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Directive.swift; path = Types/Directive.swift; sourceTree = "<group>"; };
-		7C2B5E911C0CEE040027C874 /* InlineFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InlineFragment.swift; path = Types/InlineFragment.swift; sourceTree = "<group>"; };
 		7C6A5BD51BF122F40086E7EB /* GraphQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraphQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6A5BD71BF122F40086E7EB /* GraphQLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTests.swift; sourceTree = "<group>"; };
 		7C6A5BD91BF122F40086E7EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C6A5BE11BF123100086E7EB /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = SOURCE_ROOT; };
 		7C6A5BE21BF123100086E7EB /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = SOURCE_ROOT; };
+		7C7B81D81C15E1A100691A04 /* GraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
+		7C7B81D91C15E1A100691A04 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C7B81DA1C15E1A100691A04 /* StringRendering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRendering.swift; sourceTree = "<group>"; };
+		7C7B81DC1C15E1A100691A04 /* Directive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directive.swift; sourceTree = "<group>"; };
+		7C7B81DD1C15E1A100691A04 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		7C7B81DE1C15E1A100691A04 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		7C7B81DF1C15E1A100691A04 /* Fragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fragment.swift; sourceTree = "<group>"; };
+		7C7B81E01C15E1A100691A04 /* InlineFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InlineFragment.swift; sourceTree = "<group>"; };
+		7C7B81E11C15E1A100691A04 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		7C7B81EC1C15E1B000691A04 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,8 @@
 		7C15C6671BEDB88C0004ACA4 = {
 			isa = PBXGroup;
 			children = (
-				7C15C6731BEDB88C0004ACA4 /* GraphQL */,
+				7C7B81EC1C15E1B000691A04 /* Package.swift */,
+				7C7B81D61C15E1A100691A04 /* Sources */,
 				7C6A5BD61BF122F40086E7EB /* GraphQLTests */,
 				7C15C6721BEDB88C0004ACA4 /* Products */,
 			);
@@ -102,30 +105,6 @@
 				7C6A5BD51BF122F40086E7EB /* GraphQLTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7C15C6731BEDB88C0004ACA4 /* GraphQL */ = {
-			isa = PBXGroup;
-			children = (
-				7C15C6741BEDB88C0004ACA4 /* GraphQL.h */,
-				7C15C67C1BEDB89F0004ACA4 /* GraphQL.swift */,
-				7C2B5E861C0CEBB50027C874 /* StringRendering.swift */,
-				7C2B5E881C0CED710027C874 /* Types */,
-				7C15C6761BEDB88C0004ACA4 /* Info.plist */,
-			);
-			path = GraphQL;
-			sourceTree = "<group>";
-		};
-		7C2B5E881C0CED710027C874 /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				7C2B5E891C0CED860027C874 /* Field.swift */,
-				7C2B5E8B1C0CEDAA0027C874 /* Document.swift */,
-				7C2B5E8D1C0CEDCB0027C874 /* Operation.swift */,
-				7C2B5E8F1C0CEDE40027C874 /* Directive.swift */,
-				7C2B5E911C0CEE040027C874 /* InlineFragment.swift */,
-			);
-			name = Types;
 			sourceTree = "<group>";
 		};
 		7C6A5BD61BF122F40086E7EB /* GraphQLTests */ = {
@@ -147,6 +126,30 @@
 			name = "Test Dependencies";
 			sourceTree = "<group>";
 		};
+		7C7B81D61C15E1A100691A04 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				7C7B81D81C15E1A100691A04 /* GraphQL.swift */,
+				7C7B81D91C15E1A100691A04 /* Info.plist */,
+				7C7B81DA1C15E1A100691A04 /* StringRendering.swift */,
+				7C7B81DB1C15E1A100691A04 /* Types */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		7C7B81DB1C15E1A100691A04 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				7C7B81DC1C15E1A100691A04 /* Directive.swift */,
+				7C7B81DD1C15E1A100691A04 /* Document.swift */,
+				7C7B81DE1C15E1A100691A04 /* Field.swift */,
+				7C7B81DF1C15E1A100691A04 /* Fragment.swift */,
+				7C7B81E01C15E1A100691A04 /* InlineFragment.swift */,
+				7C7B81E11C15E1A100691A04 /* Operation.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -154,7 +157,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C15C6751BEDB88C0004ACA4 /* GraphQL.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,13 +258,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C2B5E8C1C0CEDAA0027C874 /* Document.swift in Sources */,
-				7C2B5E921C0CEE040027C874 /* InlineFragment.swift in Sources */,
-				7C15C67D1BEDB89F0004ACA4 /* GraphQL.swift in Sources */,
-				7C2B5E871C0CEBB60027C874 /* StringRendering.swift in Sources */,
-				7C2B5E8E1C0CEDCB0027C874 /* Operation.swift in Sources */,
-				7C2B5E8A1C0CED870027C874 /* Field.swift in Sources */,
-				7C2B5E901C0CEDE40027C874 /* Directive.swift in Sources */,
+				7C7B81E81C15E1A100691A04 /* Field.swift in Sources */,
+				7C7B81EA1C15E1A100691A04 /* InlineFragment.swift in Sources */,
+				7C7B81E71C15E1A100691A04 /* Document.swift in Sources */,
+				7C7B81ED1C15E1B000691A04 /* Package.swift in Sources */,
+				7C7B81EB1C15E1A100691A04 /* Operation.swift in Sources */,
+				7C7B81E31C15E1A100691A04 /* GraphQL.swift in Sources */,
+				7C7B81E91C15E1A100691A04 /* Fragment.swift in Sources */,
+				7C7B81E51C15E1A100691A04 /* StringRendering.swift in Sources */,
+				7C7B81E61C15E1A100691A04 /* Directive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +388,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = GraphQL/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.justinmakaila.GraphQL;
@@ -402,7 +406,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = GraphQL/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.justinmakaila.GraphQL;
