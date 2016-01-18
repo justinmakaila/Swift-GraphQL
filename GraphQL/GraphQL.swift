@@ -1,7 +1,14 @@
 import Foundation
 
-public protocol GraphQLType {
+public protocol GraphQLType: CustomStringConvertible, CustomDebugStringConvertible {
     var queryString: String { get }
+}
+
+public protocol GraphQLOperation: GraphQLType {
+    var type: GraphQL.OperationType { get }
+    var name: String { get }
+    var arguments: [String: AnyObject] { get }
+    var selectionSet: GraphQL.SelectionSet { get }
 }
 
 public struct GraphQL {
@@ -65,22 +72,26 @@ public struct GraphQL {
         }
     }
     
-    /**
-     Operation Definition:
-        OperationType Name? VariableDefinitions? Directives? SelectionSet
-     
-     There are two types of operations, as specified in `OperationType`. 
-     
-     Each operation is represented by an optional operation name and a selection set.
-    */
-    public struct Operation: GraphQLType {
-        public let type: OperationType
+    public struct Query: GraphQLOperation {
+        public let type: OperationType = .Query
         public let name: String
         public let arguments: [String: AnyObject]
         public let selectionSet: SelectionSet
         
-        public init(type: OperationType, name: String = "", arguments: [String: AnyObject] = [:], selectionSet: SelectionSet) {
-            self.type = type
+        public init(name: String = "", arguments: [String: AnyObject] = [:], selectionSet: SelectionSet) {
+            self.name = name
+            self.arguments = arguments
+            self.selectionSet = selectionSet
+        }
+    }
+    
+    public struct Mutation: GraphQLOperation {
+        public let type: OperationType = .Mutation
+        public let name: String
+        public let arguments: [String: AnyObject]
+        public let selectionSet: SelectionSet
+        
+        public init(name: String = "", arguments: [String: AnyObject] = [:], selectionSet: SelectionSet) {
             self.name = name
             self.arguments = arguments
             self.selectionSet = selectionSet

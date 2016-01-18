@@ -53,8 +53,7 @@ class ViewController: UIViewController {
     }
     
     func getUserNamedQuery(id: String) {
-        let userQuery = GraphQL.Operation(
-            type: .Query,
+        let userQuery = GraphQL.Query(
             name: "getUser",
             arguments: [
                 "id": id
@@ -85,8 +84,7 @@ class ViewController: UIViewController {
             }
         }
         */
-        let createUserMutation = GraphQL.Operation(
-            type: .Mutation,
+        let createUserMutation = GraphQL.Mutation(
             name: "createUser",
             arguments: [
                 "name": name

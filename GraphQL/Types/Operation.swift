@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - GraphQL.Operation Extensions
 
-extension GraphQL.Operation: CustomStringConvertible, CustomDebugStringConvertible {
+extension GraphQLOperation {
     public var queryString: String {
         return description
     }
@@ -14,6 +14,11 @@ extension GraphQL.Operation: CustomStringConvertible, CustomDebugStringConvertib
     }
     
     public var debugDescription: String {
-        return "GraphQL.Operation(\(description))"
+        switch type {
+        case .Mutation:
+            return "GraphQL.Mutation(\(description))"
+        case .Query:
+            return "GraphQL.Query(\(description))"
+        }
     }
 }
