@@ -3,12 +3,12 @@ import Foundation
 // MARK: - GraphQL.Document Extensions
 
 extension GraphQL.Document: ArrayLiteralConvertible {
-    public init(arrayLiteral elements: GraphQLQueryType...) {
+    public init(arrayLiteral elements: GraphQLType...) {
         self.init(operations: elements)
     }
 }
 
-extension GraphQL.Document: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
+extension GraphQL.Document: CustomStringConvertible, CustomDebugStringConvertible {
     public var queryString: String {
         return description
     }

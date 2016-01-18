@@ -14,7 +14,7 @@ import Foundation
 
 // MARK: - String Rendering Helpers
 
-internal func renderDocument(operations: [GraphQLQueryType]) -> String {
+internal func renderDocument(operations: [GraphQLType]) -> String {
     let operationsList = operations.reduce([]) { $0 + [$1.queryString] }
     
     if !operationsList.isEmpty {

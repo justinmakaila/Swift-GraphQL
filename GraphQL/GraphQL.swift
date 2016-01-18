@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol GraphQLQueryType {
+public protocol GraphQLType {
     var queryString: String { get }
 }
 
@@ -57,10 +57,10 @@ public struct GraphQL {
      
      If a document contains only one operation, that operation may be unnamed or represented in the shorthand form, which omits both the query keyword and operation name. Otherwise, if a GraphQL query document contains multiple operations, each operation must be named. When submitting a query document with multiple operations to a GraphQL service, the name of the desired operation to be executed must also be provided.
     */
-    public struct Document {
-        public let operations: [GraphQLQueryType]
+    public struct Document: GraphQLType {
+        public let operations: [GraphQLType]
         
-        init(operations: [GraphQLQueryType]) {
+        public init(operations: [GraphQLType]) {
             self.operations = operations
         }
     }
@@ -73,7 +73,7 @@ public struct GraphQL {
      
      Each operation is represented by an optional operation name and a selection set.
     */
-    public struct Operation {
+    public struct Operation: GraphQLType {
         public let type: OperationType
         public let name: String
         public let arguments: [String: AnyObject]
@@ -95,7 +95,7 @@ public struct GraphQL {
      
      All GraphQL operations must specify their selections down to fields which return scalar values to ensure an unambiguously shaped response.
     */
-    public struct Field {
+    public struct Field: GraphQLType {
         public let alias: String?
         public let name: String
         public let arguments: [String: AnyObject]
@@ -104,7 +104,7 @@ public struct GraphQL {
         
         public let fragments: [InlineFragment]
         
-        var isRootNode: Bool {
+        public var isRootNode: Bool {
             return name.isEmpty
         }
 

@@ -1,0 +1,10 @@
+version: "Apple Swift version 2.2-dev (LLVM 46be9ff861, Clang 4deb154edc, Swift 778f82939c)"
+options: "c71f906c4fb7af45c7c3fc077c794a81"
+build_time: [502820076, 510827000]
+inputs:
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Types/Directive.swift": !dirty [502236961, 0]
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Types/Document.swift": !dirty [502231737, 0]
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Types/Field.swift": !dirty [502235290, 0]
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Types/Fragment.swift": !dirty [502256233, 0]
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Types/InlineFragment.swift": !dirty [502231834, 0]
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Types/Operation.swift": !dirty [502254592, 0]

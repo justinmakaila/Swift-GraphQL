@@ -36,11 +36,11 @@ class ViewController: UIViewController {
             arguments: [
                 "id": id
             ],
-            fields: [
+            selectionSet: [
                 "name",
                 GraphQL.Field(
                     name: "friends",
-                    fields: [
+                    selectionSet: [
                         "name"
                     ]
                 )
@@ -53,18 +53,19 @@ class ViewController: UIViewController {
     }
     
     func getUserNamedQuery(id: String) {
-        let userQuery = GraphQL.Query(
+        let userQuery = GraphQL.Operation(
+            type: .Query,
             name: "getUser",
             arguments: [
                 "id": id
             ],
-            fields: [
+            selectionSet: [
                 GraphQL.Field(
                     name: "user",
                     arguments: [
                         "id": id
                     ],
-                    fields: [
+                    selectionSet: [
                         "name"
                     ]
                 )
@@ -84,12 +85,13 @@ class ViewController: UIViewController {
             }
         }
         */
-        let createUserMutation = GraphQL.Mutation(
+        let createUserMutation = GraphQL.Operation(
+            type: .Mutation,
             name: "createUser",
             arguments: [
                 "name": name
             ],
-            fields: [
+            selectionSet: [
                 "name",
                 "id",
             ]
@@ -110,7 +112,7 @@ private extension ViewController {
         return request
     }
     
-    func requestForQuery(query: GraphQLQueryType, arguments: [String: AnyObject]? = nil) -> NSURLRequest {
+    func requestForQuery(query: GraphQLType, arguments: [String: AnyObject]? = nil) -> NSURLRequest {
         let request = mutableURLRequest()
         
         var parameters: [String: AnyObject] = [

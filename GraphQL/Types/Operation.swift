@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - GraphQL.Operation Extensions
 
-extension GraphQL.Operation: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
+extension GraphQL.Operation: CustomStringConvertible, CustomDebugStringConvertible {
     public var queryString: String {
         return description
     }

@@ -15,6 +15,23 @@
 		7C2B5E8E1C0CEDCB0027C874 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B5E8D1C0CEDCB0027C874 /* Operation.swift */; };
 		7C2B5E901C0CEDE40027C874 /* Directive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B5E8F1C0CEDE40027C874 /* Directive.swift */; };
 		7C2B5E921C0CEE040027C874 /* InlineFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2B5E911C0CEE040027C874 /* InlineFragment.swift */; };
+		7C653CC11C4C8948006725A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C653CC01C4C8948006725A8 /* AppDelegate.swift */; };
+		7C653CC31C4C8948006725A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C653CC21C4C8948006725A8 /* ViewController.swift */; };
+		7C653CC61C4C8948006725A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C653CC41C4C8948006725A8 /* Main.storyboard */; };
+		7C653CC81C4C8948006725A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C653CC71C4C8948006725A8 /* Assets.xcassets */; };
+		7C653CCB1C4C8948006725A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C653CC91C4C8948006725A8 /* LaunchScreen.storyboard */; };
+		7C653CD71C4C8B4A006725A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD31C4C8B4A006725A8 /* Alamofire.framework */; };
+		7C653CD81C4C8B4A006725A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD31C4C8B4A006725A8 /* Alamofire.framework */; };
+		7C653CD91C4C8B4A006725A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD31C4C8B4A006725A8 /* Alamofire.framework */; };
+		7C653CDA1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */; };
+		7C653CDB1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */; };
+		7C653CDC1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */; };
+		7C653CDD1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */; };
+		7C653CDE1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */; };
+		7C653CDF1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */; };
+		7C653CE01C4C8B4A006725A8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD61C4C8B4A006725A8 /* Result.framework */; };
+		7C653CE11C4C8B4A006725A8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD61C4C8B4A006725A8 /* Result.framework */; };
+		7C653CE21C4C8B4A006725A8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD61C4C8B4A006725A8 /* Result.framework */; };
 		7C6A5BD81BF122F40086E7EB /* GraphQLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A5BD71BF122F40086E7EB /* GraphQLTests.swift */; };
 		7C6A5BDA1BF122F40086E7EB /* GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C15C6711BEDB88C0004ACA4 /* GraphQL.framework */; };
 		7C6A5BE31BF123100086E7EB /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6A5BE11BF123100086E7EB /* Nimble.framework */; };
@@ -24,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7C653CD01C4C8A2B006725A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C15C6681BEDB88C0004ACA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C15C6701BEDB88C0004ACA4;
+			remoteInfo = GraphQL;
+		};
 		7C6A5BDB1BF122F40086E7EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7C15C6681BEDB88C0004ACA4 /* Project object */;
@@ -58,6 +82,18 @@
 		7C2B5E8D1C0CEDCB0027C874 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operation.swift; path = Types/Operation.swift; sourceTree = "<group>"; };
 		7C2B5E8F1C0CEDE40027C874 /* Directive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Directive.swift; path = Types/Directive.swift; sourceTree = "<group>"; };
 		7C2B5E911C0CEE040027C874 /* InlineFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InlineFragment.swift; path = Types/InlineFragment.swift; sourceTree = "<group>"; };
+		7C653CB81C4C88F9006725A8 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		7C653CBE1C4C8948006725A8 /* GraphQLExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphQLExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C653CC01C4C8948006725A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7C653CC21C4C8948006725A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7C653CC51C4C8948006725A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7C653CC71C4C8948006725A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7C653CCA1C4C8948006725A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7C653CCC1C4C8948006725A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C653CD31C4C8B4A006725A8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMoya.framework; path = Carthage/Build/iOS/ReactiveMoya.framework; sourceTree = "<group>"; };
+		7C653CD61C4C8B4A006725A8 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		7C6A5BD51BF122F40086E7EB /* GraphQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraphQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6A5BD71BF122F40086E7EB /* GraphQLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLTests.swift; sourceTree = "<group>"; };
 		7C6A5BD91BF122F40086E7EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +106,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C653CD71C4C8B4A006725A8 /* Alamofire.framework in Frameworks */,
+				7C653CDA1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */,
+				7C653CDD1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */,
+				7C653CE01C4C8B4A006725A8 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C653CBB1C4C8948006725A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C653CD91C4C8B4A006725A8 /* Alamofire.framework in Frameworks */,
+				7C653CDC1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */,
+				7C653CDF1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */,
+				7C653CE21C4C8B4A006725A8 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,8 +129,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6A5BDA1BF122F40086E7EB /* GraphQL.framework in Frameworks */,
+				7C653CE11C4C8B4A006725A8 /* Result.framework in Frameworks */,
 				7C6A5BE31BF123100086E7EB /* Nimble.framework in Frameworks */,
 				7C6A5BE41BF123100086E7EB /* Quick.framework in Frameworks */,
+				7C653CD81C4C8B4A006725A8 /* Alamofire.framework in Frameworks */,
+				7C653CDB1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */,
+				7C653CDE1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +146,7 @@
 			children = (
 				7C15C6731BEDB88C0004ACA4 /* GraphQL */,
 				7C6A5BD61BF122F40086E7EB /* GraphQLTests */,
+				7C653CBF1C4C8948006725A8 /* GraphQLExample */,
 				7C15C6721BEDB88C0004ACA4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +156,7 @@
 			children = (
 				7C15C6711BEDB88C0004ACA4 /* GraphQL.framework */,
 				7C6A5BD51BF122F40086E7EB /* GraphQLTests.xctest */,
+				7C653CBE1C4C8948006725A8 /* GraphQLExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,6 +183,32 @@
 				7C2B5E911C0CEE040027C874 /* InlineFragment.swift */,
 			);
 			name = Types;
+			sourceTree = "<group>";
+		};
+		7C653CBF1C4C8948006725A8 /* GraphQLExample */ = {
+			isa = PBXGroup;
+			children = (
+				7C653CD21C4C8AC9006725A8 /* Dependencies */,
+				7C653CB81C4C88F9006725A8 /* Cartfile */,
+				7C653CC01C4C8948006725A8 /* AppDelegate.swift */,
+				7C653CC21C4C8948006725A8 /* ViewController.swift */,
+				7C653CC41C4C8948006725A8 /* Main.storyboard */,
+				7C653CC71C4C8948006725A8 /* Assets.xcassets */,
+				7C653CC91C4C8948006725A8 /* LaunchScreen.storyboard */,
+				7C653CCC1C4C8948006725A8 /* Info.plist */,
+			);
+			path = GraphQLExample;
+			sourceTree = "<group>";
+		};
+		7C653CD21C4C8AC9006725A8 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				7C653CD31C4C8B4A006725A8 /* Alamofire.framework */,
+				7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */,
+				7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */,
+				7C653CD61C4C8B4A006725A8 /* Result.framework */,
+			);
+			name = Dependencies;
 			sourceTree = "<group>";
 		};
 		7C6A5BD61BF122F40086E7EB /* GraphQLTests */ = {
@@ -179,6 +262,24 @@
 			productReference = 7C15C6711BEDB88C0004ACA4 /* GraphQL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		7C653CBD1C4C8948006725A8 /* GraphQLExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C653CCD1C4C8948006725A8 /* Build configuration list for PBXNativeTarget "GraphQLExample" */;
+			buildPhases = (
+				7C653CBA1C4C8948006725A8 /* Sources */,
+				7C653CBB1C4C8948006725A8 /* Frameworks */,
+				7C653CBC1C4C8948006725A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7C653CD11C4C8A2B006725A8 /* PBXTargetDependency */,
+			);
+			name = GraphQLExample;
+			productName = GraphQLExample;
+			productReference = 7C653CBE1C4C8948006725A8 /* GraphQLExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		7C6A5BD41BF122F40086E7EB /* GraphQLTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C6A5BDD1BF122F40086E7EB /* Build configuration list for PBXNativeTarget "GraphQLTests" */;
@@ -204,12 +305,15 @@
 		7C15C6681BEDB88C0004ACA4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = justinmakaila;
 				TargetAttributes = {
 					7C15C6701BEDB88C0004ACA4 = {
 						CreatedOnToolsVersion = 7.1;
+					};
+					7C653CBD1C4C8948006725A8 = {
+						CreatedOnToolsVersion = 7.2;
 					};
 					7C6A5BD41BF122F40086E7EB = {
 						CreatedOnToolsVersion = 7.1;
@@ -222,6 +326,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7C15C6671BEDB88C0004ACA4;
 			productRefGroup = 7C15C6721BEDB88C0004ACA4 /* Products */;
@@ -230,6 +335,7 @@
 			targets = (
 				7C15C6701BEDB88C0004ACA4 /* GraphQL */,
 				7C6A5BD41BF122F40086E7EB /* GraphQLTests */,
+				7C653CBD1C4C8948006725A8 /* GraphQLExample */,
 			);
 		};
 /* End PBXProject section */
@@ -239,6 +345,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C653CBC1C4C8948006725A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C653CCB1C4C8948006725A8 /* LaunchScreen.storyboard in Resources */,
+				7C653CC81C4C8948006725A8 /* Assets.xcassets in Resources */,
+				7C653CC61C4C8948006725A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +382,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7C653CBA1C4C8948006725A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C653CC31C4C8948006725A8 /* ViewController.swift in Sources */,
+				7C653CC11C4C8948006725A8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7C6A5BD11BF122F40086E7EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -277,12 +402,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7C653CD11C4C8A2B006725A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C15C6701BEDB88C0004ACA4 /* GraphQL */;
+			targetProxy = 7C653CD01C4C8A2B006725A8 /* PBXContainerItemProxy */;
+		};
 		7C6A5BDC1BF122F40086E7EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7C15C6701BEDB88C0004ACA4 /* GraphQL */;
 			targetProxy = 7C6A5BDB1BF122F40086E7EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7C653CC41C4C8948006725A8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C653CC51C4C8948006725A8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7C653CC91C4C8948006725A8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C653CCA1C4C8948006725A8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7C15C6771BEDB88C0004ACA4 /* Debug */ = {
@@ -384,6 +533,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GraphQLExample/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GraphQL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -402,6 +555,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GraphQLExample/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = GraphQL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -411,12 +568,45 @@
 			};
 			name = Release;
 		};
+		7C653CCE1C4C8948006725A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GraphQLExample/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = GraphQLExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinmakaila.GraphQLExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7C653CCF1C4C8948006725A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GraphQLExample/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = GraphQLExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinmakaila.GraphQLExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		7C6A5BDE1BF122F40086E7EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/GraphQLExample/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = GraphQLTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -431,6 +621,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/GraphQLExample/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = GraphQLTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -459,6 +650,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		7C653CCD1C4C8948006725A8 /* Build configuration list for PBXNativeTarget "GraphQLExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C653CCE1C4C8948006725A8 /* Debug */,
+				7C653CCF1C4C8948006725A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		7C6A5BDD1BF122F40086E7EB /* Build configuration list for PBXNativeTarget "GraphQLTests" */ = {
 			isa = XCConfigurationList;

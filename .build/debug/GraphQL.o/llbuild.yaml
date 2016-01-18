@@ -1,0 +1,29 @@
+client:
+  name: swift-build
+
+tools: {}
+
+targets:
+  "": [<GraphQL>]
+  GraphQL: [<GraphQL>]
+
+commands:
+  <GraphQL-swiftc>:
+    tool: swift-compiler
+    executable: "/Library/Developer/Toolchains/swift-2.2-SNAPSHOT-2015-12-01-a.xctoolchain/usr/bin/swiftc"
+    inputs: ["/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Directive.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Document.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Field.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Fragment.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/GraphQL.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/InlineFragment.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Operation.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/StringRendering.swift"]
+    outputs: ["<GraphQL-swiftc>","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.swiftmodule","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Directive.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Document.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Field.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Fragment.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/GraphQL.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/InlineFragment.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Operation.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/StringRendering.swift.o"]
+    module-name: "GraphQL"
+    module-output-path: "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.swiftmodule"
+    is-library: true
+    sources: ["/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Directive.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Document.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Field.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Fragment.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/GraphQL.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/InlineFragment.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Operation.swift","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/StringRendering.swift"]
+    objects: ["/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Directive.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Document.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Field.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Fragment.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/GraphQL.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/InlineFragment.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Operation.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/StringRendering.swift.o"]
+    import-paths: ["/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug"]
+    temps-path: "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL"
+    other-args: ["-j8","-Onone","-g","-target","x86_64-apple-macosx10.10","-enable-testing","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk","-I","/usr/local/include"]
+  <GraphQL>:
+    tool: shell
+    inputs: ["<GraphQL-swiftc>","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Directive.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Document.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Field.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Fragment.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/GraphQL.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/InlineFragment.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Operation.swift.o","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/StringRendering.swift.o"]
+    outputs: ["<GraphQL>","/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.a"]
+    args: ["/bin/sh","-c","rm -f '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.a'; ar cr '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.a' '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Directive.swift.o' '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Document.swift.o' '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Field.swift.o' '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Fragment.swift.o' '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/GraphQL.swift.o' '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/InlineFragment.swift.o' '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Operation.swift.o' '/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/StringRendering.swift.o'"]
+    description: "Linking Library:  .build/debug/GraphQL.a"

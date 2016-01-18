@@ -1,0 +1,53 @@
+{
+  "": {
+    "swift-dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/master.swiftdeps"
+  },
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Directive.swift": {
+    "dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Directive.d",
+    "object": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Directive.swift.o",
+    "swiftmodule": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Directive~partial.swiftmodule",
+    "swift-dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Directive.swiftdeps"
+  },
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Document.swift": {
+    "dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Document.d",
+    "object": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Document.swift.o",
+    "swiftmodule": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Document~partial.swiftmodule",
+    "swift-dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Document.swiftdeps"
+  },
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Field.swift": {
+    "dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Field.d",
+    "object": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Field.swift.o",
+    "swiftmodule": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Field~partial.swiftmodule",
+    "swift-dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Field.swiftdeps"
+  },
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Fragment.swift": {
+    "dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Fragment.d",
+    "object": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Fragment.swift.o",
+    "swiftmodule": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Fragment~partial.swiftmodule",
+    "swift-dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Fragment.swiftdeps"
+  },
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/GraphQL.swift": {
+    "dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/GraphQL.d",
+    "object": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/GraphQL.swift.o",
+    "swiftmodule": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/GraphQL~partial.swiftmodule",
+    "swift-dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/GraphQL.swiftdeps"
+  },
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/InlineFragment.swift": {
+    "dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/InlineFragment.d",
+    "object": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/InlineFragment.swift.o",
+    "swiftmodule": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/InlineFragment~partial.swiftmodule",
+    "swift-dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/InlineFragment.swiftdeps"
+  },
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/Operation.swift": {
+    "dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Operation.d",
+    "object": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/Operation.swift.o",
+    "swiftmodule": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Operation~partial.swiftmodule",
+    "swift-dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/Operation.swiftdeps"
+  },
+  "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/Sources/StringRendering.swift": {
+    "dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/StringRendering.d",
+    "object": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/Sources/StringRendering.swift.o",
+    "swiftmodule": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/StringRendering~partial.swiftmodule",
+    "swift-dependencies": "/Users/justinmakaila/Workspace/Swift/Swift-GraphQL/.build/debug/GraphQL.o/GraphQL/StringRendering.swiftdeps"
+  }
+}

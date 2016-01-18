@@ -16,7 +16,7 @@ extension GraphQL.Field: StringLiteralConvertible {
     }
 }
 
-extension GraphQL.Field: GraphQLQueryType, CustomStringConvertible, CustomDebugStringConvertible {
+extension GraphQL.Field: CustomStringConvertible, CustomDebugStringConvertible {
     public var queryString: String {
         return description
     }
