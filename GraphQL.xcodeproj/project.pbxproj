@@ -20,16 +20,12 @@
 		7C653CC61C4C8948006725A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C653CC41C4C8948006725A8 /* Main.storyboard */; };
 		7C653CC81C4C8948006725A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C653CC71C4C8948006725A8 /* Assets.xcassets */; };
 		7C653CCB1C4C8948006725A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C653CC91C4C8948006725A8 /* LaunchScreen.storyboard */; };
-		7C653CD71C4C8B4A006725A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD31C4C8B4A006725A8 /* Alamofire.framework */; };
 		7C653CD81C4C8B4A006725A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD31C4C8B4A006725A8 /* Alamofire.framework */; };
 		7C653CD91C4C8B4A006725A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD31C4C8B4A006725A8 /* Alamofire.framework */; };
-		7C653CDA1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */; };
 		7C653CDB1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */; };
 		7C653CDC1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */; };
-		7C653CDD1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */; };
 		7C653CDE1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */; };
 		7C653CDF1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */; };
-		7C653CE01C4C8B4A006725A8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD61C4C8B4A006725A8 /* Result.framework */; };
 		7C653CE11C4C8B4A006725A8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD61C4C8B4A006725A8 /* Result.framework */; };
 		7C653CE21C4C8B4A006725A8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD61C4C8B4A006725A8 /* Result.framework */; };
 		7C6A5BD81BF122F40086E7EB /* GraphQLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A5BD71BF122F40086E7EB /* GraphQLTests.swift */; };
@@ -106,10 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C653CD71C4C8B4A006725A8 /* Alamofire.framework in Frameworks */,
-				7C653CDA1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */,
-				7C653CDD1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */,
-				7C653CE01C4C8B4A006725A8 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,10 +525,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/GraphQLExample/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = GraphQL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -555,10 +544,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/GraphQLExample/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = GraphQL/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -658,6 +644,7 @@
 				7C653CCF1C4C8948006725A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7C6A5BDD1BF122F40086E7EB /* Build configuration list for PBXNativeTarget "GraphQLTests" */ = {
 			isa = XCConfigurationList;
