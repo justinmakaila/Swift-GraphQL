@@ -13,6 +13,10 @@ import Alamofire
 private let ExampleURL = NSURL(string: "http://localhost:3000/data")!
 private let LukeSkywalkerUserId = "559645cd1a38532d14349246"
 
+private let UserNameFragment: GraphQL.Fragment = GraphQL.Fragment(name: "UserNameFragment", typeCondition: "User", selectionSet: [
+    "name",
+])
+
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,17 +41,17 @@ class ViewController: UIViewController {
                 "id": id
             ],
             selectionSet: [
-                "name",
+                "...UserNameFragment",
                 GraphQL.Field(
                     name: "friends",
                     selectionSet: [
-                        "name"
+                        "...UserNameFragment"
                     ]
                 )
             ]
         )
 
-        let document = GraphQL.Document(arrayLiteral: userQuery)
+        let document = GraphQL.Document(operations: [userQuery, UserNameFragment])
         let request = requestForQuery(document)
         executeRequest(request)
     }

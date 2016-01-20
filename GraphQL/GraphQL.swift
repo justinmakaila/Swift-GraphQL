@@ -4,6 +4,12 @@ public protocol GraphQLType: CustomStringConvertible, CustomDebugStringConvertib
     var queryString: String { get }
 }
 
+extension GraphQLType {
+    public var queryString: String {
+        return description
+    }
+}
+
 public protocol GraphQLOperation: GraphQLType {
     var type: GraphQL.OperationType { get }
     var name: String { get }
@@ -170,6 +176,18 @@ public struct GraphQL {
             
             self.typeCondition = typeCondition
             self.directive = directive
+            self.selectionSet = selectionSet
+        }
+    }
+    
+    public struct Fragment: GraphQLType {
+        public let name: String
+        public let typeCondition: String
+        public let selectionSet: SelectionSet
+        
+        init(name: String, typeCondition: String, selectionSet: SelectionSet) {
+            self.name = name
+            self.typeCondition = typeCondition
             self.selectionSet = selectionSet
         }
     }

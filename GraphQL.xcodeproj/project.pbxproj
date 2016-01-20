@@ -34,6 +34,7 @@
 		7C6A5BE41BF123100086E7EB /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6A5BE21BF123100086E7EB /* Quick.framework */; };
 		7C6A5BE61BF154090086E7EB /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C6A5BE11BF123100086E7EB /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C6A5BE71BF154090086E7EB /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C6A5BE21BF123100086E7EB /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C79DC291C4FFDB50015FB6F /* Fragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79DC281C4FFDB50015FB6F /* Fragment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		7C6A5BD91BF122F40086E7EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C6A5BE11BF123100086E7EB /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = SOURCE_ROOT; };
 		7C6A5BE21BF123100086E7EB /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = SOURCE_ROOT; };
+		7C79DC281C4FFDB50015FB6F /* Fragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fragment.swift; path = Types/Fragment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				7C2B5E8D1C0CEDCB0027C874 /* Operation.swift */,
 				7C2B5E8F1C0CEDE40027C874 /* Directive.swift */,
 				7C2B5E911C0CEE040027C874 /* InlineFragment.swift */,
+				7C79DC281C4FFDB50015FB6F /* Fragment.swift */,
 			);
 			name = Types;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				7C15C67D1BEDB89F0004ACA4 /* GraphQL.swift in Sources */,
 				7C2B5E871C0CEBB60027C874 /* StringRendering.swift in Sources */,
 				7C2B5E8E1C0CEDCB0027C874 /* Operation.swift in Sources */,
+				7C79DC291C4FFDB50015FB6F /* Fragment.swift in Sources */,
 				7C2B5E8A1C0CED870027C874 /* Field.swift in Sources */,
 				7C2B5E901C0CEDE40027C874 /* Directive.swift in Sources */,
 			);

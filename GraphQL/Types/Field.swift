@@ -2,6 +2,16 @@ import Foundation
 
 // MARK: - GraphQL.Field Extensions
 
+extension GraphQL.Field {
+    public init(alias: String, operation: GraphQLOperation) {
+        self.init(alias: alias, name: operation.name, arguments: operation.arguments, selectionSet: operation.selectionSet)
+    }
+    
+    public init(operation: GraphQLOperation) {
+        self.init(name: operation.name, arguments: operation.arguments, selectionSet: operation.selectionSet)
+    }
+}
+
 extension GraphQL.Field: StringLiteralConvertible {
     public init(stringLiteral value: StringLiteralType) {
         self.init(name: value)
