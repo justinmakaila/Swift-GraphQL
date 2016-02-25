@@ -185,7 +185,7 @@ public struct GraphQL {
         public let typeCondition: String
         public let selectionSet: SelectionSet
         
-        init(name: String, typeCondition: String, selectionSet: SelectionSet) {
+        public init(name: String, typeCondition: String, selectionSet: SelectionSet) {
             self.name = name
             self.typeCondition = typeCondition
             self.selectionSet = selectionSet
