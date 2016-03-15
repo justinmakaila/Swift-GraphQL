@@ -44,3 +44,14 @@ extension GraphQL.Field: CustomStringConvertible, CustomDebugStringConvertible {
         return "GraphQL.Field(\(description))"
     }
 }
+
+extension GraphQL.Field: Hashable {
+    public var hashValue: Int {
+        return name.hashValue
+    }
+}
+
+extension GraphQL.Field: Equatable { }
+public func == (lhs: GraphQL.Field, rhs: GraphQL.Field) -> Bool {
+    return lhs.name == rhs.name
+}
