@@ -54,7 +54,7 @@ internal func renderArgumentsList(arguments: [String: AnyObject] = [:]) -> Strin
                 argumentValue = "\"\(argumentValue)\""
             }
         default:
-            print("Argument is raw type")
+            break
         }
         
         return value + ["\(argumentKey): \(argumentValue)"]

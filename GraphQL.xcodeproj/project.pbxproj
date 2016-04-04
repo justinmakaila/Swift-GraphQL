@@ -20,13 +20,9 @@
 		7C653CC61C4C8948006725A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C653CC41C4C8948006725A8 /* Main.storyboard */; };
 		7C653CC81C4C8948006725A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C653CC71C4C8948006725A8 /* Assets.xcassets */; };
 		7C653CCB1C4C8948006725A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C653CC91C4C8948006725A8 /* LaunchScreen.storyboard */; };
-		7C653CD81C4C8B4A006725A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD31C4C8B4A006725A8 /* Alamofire.framework */; };
 		7C653CD91C4C8B4A006725A8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD31C4C8B4A006725A8 /* Alamofire.framework */; };
-		7C653CDB1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */; };
 		7C653CDC1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD41C4C8B4A006725A8 /* ReactiveCocoa.framework */; };
-		7C653CDE1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */; };
 		7C653CDF1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD51C4C8B4A006725A8 /* ReactiveMoya.framework */; };
-		7C653CE11C4C8B4A006725A8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD61C4C8B4A006725A8 /* Result.framework */; };
 		7C653CE21C4C8B4A006725A8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C653CD61C4C8B4A006725A8 /* Result.framework */; };
 		7C6A5BD81BF122F40086E7EB /* GraphQLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A5BD71BF122F40086E7EB /* GraphQLTests.swift */; };
 		7C6A5BDA1BF122F40086E7EB /* GraphQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C15C6711BEDB88C0004ACA4 /* GraphQL.framework */; };
@@ -123,12 +119,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6A5BDA1BF122F40086E7EB /* GraphQL.framework in Frameworks */,
-				7C653CE11C4C8B4A006725A8 /* Result.framework in Frameworks */,
 				7C6A5BE31BF123100086E7EB /* Nimble.framework in Frameworks */,
 				7C6A5BE41BF123100086E7EB /* Quick.framework in Frameworks */,
-				7C653CD81C4C8B4A006725A8 /* Alamofire.framework in Frameworks */,
-				7C653CDB1C4C8B4A006725A8 /* ReactiveCocoa.framework in Frameworks */,
-				7C653CDE1C4C8B4A006725A8 /* ReactiveMoya.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
