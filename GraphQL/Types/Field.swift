@@ -56,5 +56,6 @@ public func == (lhs: GraphQL.Field, rhs: GraphQL.Field) -> Bool {
     return lhs.alias == rhs.alias
         && lhs.name == rhs.name
         && lhs.selectionSet == rhs.selectionSet
+        && (lhs.arguments ?? [:]) == (rhs.arguments ?? [:])
 
 }

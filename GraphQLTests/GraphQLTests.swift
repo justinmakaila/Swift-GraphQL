@@ -1,30 +1,26 @@
-@testable import GraphQL
 import Quick
 import Nimble
+
+@testable
+import GraphQL
 
 class GraphQLSpec: QuickSpec {
     override func spec() {
         describe("GraphQL") {
             describe("a field") {
-                var rootField: GraphQL.Field!
+                var rootField: GraphQL.SelectionSet!
                 var subField: GraphQL.Field!
                 var literalStringField: GraphQL.Field!
-                var literalArrayField: GraphQL.Field!
 
                 beforeEach {
                     literalStringField = "width"
                     
-                    literalArrayField = [
-                        "width",
-                        "height"
-                    ]
-                    
-                    subField = GraphQL.Field(name: "profilePicture", fields: [
+                    subField = GraphQL.Field(name: "profilePicture", selectionSet: [
                         "width",
                         "height"
                     ])
                     
-                    let userField = GraphQL.Field(name: "user", arguments: ["id": 12345], fields: [
+                    let userField = GraphQL.Field(name: "user", arguments: ["id": 12345], selectionSet: [
                         "firstName",
                         "lastName",
                         "username",
@@ -37,7 +33,6 @@ class GraphQLSpec: QuickSpec {
                 it("can be named") {
                     // root fields do not have names
                     expect(rootField.name).to(beNil())
-                    expect(literalArrayField.name).to(beNil())
                     
                     expect(subField.name).to(equal("profilePicture"))
                     expect(literalStringField.name).to(equal("width"))
@@ -45,8 +40,7 @@ class GraphQLSpec: QuickSpec {
                 
                 // A node is considered a "root" if it is not named
                 it("can indicate if it's the root node") {
-                    expect(rootField.isRootNode).to(equal(true))
-                    expect(literalArrayField.isRootNode).to(equal(true))
+                    //expect(rootField.isRootNode).to(equal(true))
                     
                     expect(subField.isRootNode).to(equal(false))
                     expect(literalStringField.isRootNode).to(equal(false))
@@ -56,6 +50,11 @@ class GraphQLSpec: QuickSpec {
                     let rootFieldDescriptionTrimmed = rootField.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                     
                     expect(rootFieldDescriptionTrimmed).to(equal("{ user(id:12345) { firstName lastName username profilePicture { width height } } }"))
+                }
+                
+                it("can tell if it's equal to another field") {
+                    let field = rootField
+                    expect(field).to(equal(rootField))
                 }
             }
             
@@ -69,11 +68,11 @@ class GraphQLSpec: QuickSpec {
                         "username"
                     ]
                     
-                    let friendsField = GraphQL.Field(name: "friends", arguments: ["first": 10], fields: userFields)
-                    let mutualFriendsField = GraphQL.Field(name: "mutualFriends", arguments: ["first": 30], fields: userFields)
-                    let userField = GraphQL.Field(name: "user", arguments: ["id": 12], fields: [friendsField, mutualFriendsField])
+                    let friendsField = GraphQL.Field(name: "friends", arguments: ["first": 10], selectionSet: userFields)
+                    let mutualFriendsField = GraphQL.Field(name: "mutualFriends", arguments: ["first": 30], selectionSet: userFields)
+                    let userField = GraphQL.Field(name: "user", arguments: ["id": 12], selectionSet: [friendsField, mutualFriendsField])
                     
-                    query = GraphQL.Query(name: "findFriends", fields: [userField])
+                    query = GraphQL.Query(name: "findFriends", selectionSet: [userField])
                 }
                 
                 it("must be named") {
