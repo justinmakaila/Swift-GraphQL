@@ -3,7 +3,7 @@ import Foundation
 import GraphQL
 
 /**
-mutation {
+mutation M {
     likeStory(storyId: 1234) {
         story {
             likeCount
@@ -11,7 +11,7 @@ mutation {
     }
 }
 */
-let likeStoryMutation = GraphQL.Operation(type: .Mutation, selectionSet: [
+let likeStoryMutation = GraphQL.Mutation(name: "M", selectionSet: [
     GraphQL.Field(name: "likeStory", arguments: ["storyId": 1234], selectionSet: [
         GraphQL.Field(name: "story", selectionSet: [
             "likeCount"
@@ -44,7 +44,7 @@ query getParent($id: String!) {
     }
 }
 */
-let getParentQuery: GraphQL.Operation = GraphQL.Operation(type: .Query, name: "getParent", arguments: ["id": GraphQL.InputValueType.StringValue(true).description], selectionSet: [
+let getParentQuery: GraphQL.Query = GraphQL.Query(name: "getParent", arguments: ["id": GraphQL.InputValueType.StringValue(true).description], selectionSet: [
     GraphQL.Field(name: "parent", arguments: ["id": "$id"], selectionSet: [
         "id",
         "firstName",
@@ -86,7 +86,7 @@ query inlineFragmentTyping {
     }
 }
 */
-let inlineFragmentTypingQuery: GraphQL.Operation = GraphQL.Operation(type: .Query, name: "inlineFragmentTyping", selectionSet: [
+let inlineFragmentTypingQuery: GraphQL.Query = GraphQL.Query(name: "inlineFragmentTyping", selectionSet: [
     GraphQL.Field(name: "profiles", arguments: ["handles": ["zuck", "cococola"]], selectionSet: [
         "handle"
     ], fragments: [
@@ -119,7 +119,7 @@ query inlineFragmentNoType($expandedInfo: Boolean) {
     }
 }
 */
-let inlineFragmentNoTypeQuery: GraphQL.Operation = GraphQL.Operation(type: .Query, name: "inlineFragmentNoType", arguments: ["$expandedInfo": GraphQL.InputValueType.BooleanValue(false).description], selectionSet: [
+let inlineFragmentNoTypeQuery: GraphQL.Query = GraphQL.Query(name: "inlineFragmentNoType", arguments: ["$expandedInfo": GraphQL.InputValueType.BooleanValue(false).description], selectionSet: [
     GraphQL.Field(name: "user", arguments: ["handle": "zuck"], selectionSet: [
         "id",
         "name",
@@ -145,7 +145,7 @@ query lifetimeActivity($studentId: String!) {
     }
 }
 */
-let lifetimeActivityQuery: GraphQL.Operation = GraphQL.Operation(type: .Query, name: "lifetimeActivity", arguments: ["$studentId": GraphQL.InputValueType.StringValue(true).description], selectionSet: [
+let lifetimeActivityQuery: GraphQL.Query = GraphQL.Query(name: "lifetimeActivity", arguments: ["$studentId": GraphQL.InputValueType.StringValue(true).description], selectionSet: [
     GraphQL.Field(name: "student", arguments: ["id": "$studentId"], selectionSet: [
         GraphQL.Field(alias: "lifetimeActivity", name: "activity", selectionSet: [
             "totalDuration",
