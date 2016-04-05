@@ -76,7 +76,7 @@ class GraphQLSpec: QuickSpec {
                 it("can be serialized into a string suitable for submission to a GraphQL server") {
                     let queryDescriptionTrimmed = query.description.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                     
-                    expect(queryDescriptionTrimmed).to(equal("query findFriends { user(id: 12) { friends(first: 10) { firstName lastName username }  mutualFriends(first: 30) { firstName lastName username } } }"))
+                    expect(queryDescriptionTrimmed).to(equal("query findFriends { user(id: 12) { friends(first: 10) { firstName lastName username } mutualFriends(first: 30) { firstName lastName username } } }"))
                 }
             }
         }
