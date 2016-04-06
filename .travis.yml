@@ -1,0 +1,8 @@
+language: swift
+xcode_project: GraphQL.xcodeproj # path to your xcodeproj folder
+xcode_scheme: GraphQLTests
+before_install: 
+  - brew update
+  - brew upgrade xctool
+  - brew install carthage
+  - carthage bootstrap --verbose
