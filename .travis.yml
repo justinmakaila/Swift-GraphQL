@@ -1,5 +1,6 @@
 language: swift
 osx_image: xcode7.3
+xcode_sdk: iphonesimulator9.3
 xcode_workspace: GraphQL.xcworkspace
 xcode_scheme: GraphQLTests
 env:
@@ -7,9 +8,9 @@ env:
   - FRAMEWORK_NAME=GraphQL
 before_install:
 - brew update
-- git submodule update --init --recursive
+- brew install carthage
 before_script:
-- carthage bootstrap --verbose --no-use-binaries
+- carthage bootstrap
 before_deploy:
 - carthage build --no-skip-current
 - carthage archive $FRAMEWORK_NAME
