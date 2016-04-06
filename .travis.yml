@@ -5,6 +5,9 @@ xcode_scheme: GraphQLTests
 env:
   global:
     - FRAMEWORK_NAME=GraphQL
+before_install:
+  - brew update
+  - brew install carthage
 before_script:
   - carthage bootstrap --verbose --no-use-binaries
 before_deploy:
