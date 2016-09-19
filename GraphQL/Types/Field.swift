@@ -12,7 +12,7 @@ extension GraphQL.Field {
     }
 }
 
-extension GraphQL.Field: StringLiteralConvertible {
+extension GraphQL.Field: ExpressibleByStringLiteral {
     public init(stringLiteral value: StringLiteralType) {
         self.init(name: value)
     }
@@ -33,7 +33,7 @@ extension GraphQL.Field: CustomStringConvertible, CustomDebugStringConvertible {
     
     public var description: String {
         var alias = ""
-        if let value = self.alias where !value.isEmpty {
+        if let value = self.alias , !value.isEmpty {
             alias = "\(value): "
         }
         

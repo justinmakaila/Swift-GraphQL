@@ -2,7 +2,7 @@ import Foundation
 
 // MARK: - GraphQL.Document Extensions
 
-extension GraphQL.Document: ArrayLiteralConvertible {
+extension GraphQL.Document: ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: GraphQLType...) {
         self.init(operations: elements)
     }

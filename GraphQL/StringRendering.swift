@@ -14,27 +14,27 @@ import Foundation
 
 // MARK: - String Rendering Helpers
 
-internal func renderDocument(operations: [GraphQLType]) -> String {
+internal func renderDocument(_ operations: [GraphQLType]) -> String {
     let operationsList = operations.reduce([]) { $0 + [$1.queryString] }
     
     if !operationsList.isEmpty {
-        return "{ \(operationsList.joinWithSeparator("\n")) }"
+        return "{ \(operationsList.joined(separator: "\n")) }"
     }
     
     return ""
 }
 
-internal func renderOperationArgumentsList(arguments: [String: AnyObject]) -> String {
+internal func renderOperationArgumentsList(_ arguments: [String: AnyObject]) -> String {
     let argumentsList = arguments.reduce([String]()) { $0 + ["\($1.0): \($1.1)"] }
     
     if !argumentsList.isEmpty {
-        return "(\(argumentsList.joinWithSeparator(", ")))"
+        return "(\(argumentsList.joined(separator: ", ")))"
     }
     
     return ""
 }
 
-internal func renderArgumentsList(arguments: [String: AnyObject] = [:]) -> String {
+internal func renderArgumentsList(_ arguments: [String: AnyObject] = [:]) -> String {
     // TODO: If `argument.1` is an array, wrap it in square brackets.
     // TODO: If `argument.1` is a dictionary, wrap it in curly brackets.
     let argumentsList = arguments.reduce([String]()) { value, argument in
@@ -50,8 +50,8 @@ internal func renderArgumentsList(arguments: [String: AnyObject] = [:]) -> Strin
             //argumentValue = dictionaryToGraphQLObjectString(argumentValue as! NSDictionary)
         case is NSString:
             // The argument value should only be set if it's not a variable.
-            if argumentValue.substringToIndex(1) != "$" {
-                argumentValue = "\"\(argumentValue)\""
+            if argumentValue.substring(to: 1) != "$" {
+                argumentValue = "\"\(argumentValue)\"" as AnyObject
             }
         default:
             break
@@ -61,19 +61,19 @@ internal func renderArgumentsList(arguments: [String: AnyObject] = [:]) -> Strin
     }
     
     if !argumentsList.isEmpty {
-        return "(\(argumentsList.joinWithSeparator(", ")))"
+        return "(\(argumentsList.joined(separator: ", ")))"
     }
     
     return ""
 }
 
-internal func renderSelectionSet(selectionSet: GraphQL.SelectionSet = [], fragments: [GraphQL.InlineFragment] = []) -> String {
+internal func renderSelectionSet(_ selectionSet: GraphQL.SelectionSet = [], fragments: [GraphQL.InlineFragment] = []) -> String {
     let fieldsList = selectionSet.reduce([]) { $0 + [$1.description] }
     let fragmentsList = fragments.reduce([]) { $0 + [$1.description] }
     
     if !fieldsList.isEmpty || !fragmentsList.isEmpty {
         let selectionList = fieldsList + fragmentsList
-        let selectionSet = selectionList.joinWithSeparator(" ")
+        let selectionSet = selectionList.joined(separator: " ")
         return " { \(selectionSet) }"
     }
     

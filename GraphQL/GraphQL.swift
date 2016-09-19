@@ -21,29 +21,29 @@ public struct GraphQL {
     public typealias SelectionSet = [GraphQL.Field]
     
     public enum InputValueType: CustomStringConvertible {
-        case IntValue(Bool)
-        case FloatValue(Bool)
-        case StringValue(Bool)
-        case BooleanValue(Bool)
-        case EnumValue(Bool)
-        case ListValue(Bool)
-        case ObjectValue(Bool)
+        case intValue(Bool)
+        case floatValue(Bool)
+        case stringValue(Bool)
+        case booleanValue(Bool)
+        case enumValue(Bool)
+        case listValue(Bool)
+        case objectValue(Bool)
         
         public var description: String {
             switch self {
-            case IntValue(let required):
+            case .intValue(let required):
                 return required ? "Int!" : "Int"
-            case FloatValue(let required):
+            case .floatValue(let required):
                 return required ? "Float!" : "Float"
-            case StringValue(let required):
+            case .stringValue(let required):
                 return required ? "String!" : "String"
-            case BooleanValue(let required):
+            case .booleanValue(let required):
                 return required ? "Boolean!" : "Boolean"
-            case EnumValue(let required):
+            case .enumValue(let required):
                 return required ? "Enum!" : "Enum"
-            case ListValue(let required):
+            case .listValue(let required):
                 return required ? "List!" : "List"
-            case ObjectValue(let required):
+            case .objectValue(let required):
                 return required ? "Object!": "Object"
             }
         }
