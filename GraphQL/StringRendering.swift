@@ -24,7 +24,7 @@ internal func renderDocument(_ operations: [GraphQLType]) -> String {
     return ""
 }
 
-internal func renderOperationArgumentsList(_ arguments: [String: AnyObject]) -> String {
+internal func renderOperationArgumentsList(_ arguments: [String: Any]) -> String {
     let argumentsList = arguments.reduce([String]()) { $0 + ["\($1.0): \($1.1)"] }
     
     if !argumentsList.isEmpty {
@@ -34,7 +34,7 @@ internal func renderOperationArgumentsList(_ arguments: [String: AnyObject]) -> 
     return ""
 }
 
-internal func renderArgumentsList(_ arguments: [String: AnyObject] = [:]) -> String {
+internal func renderArgumentsList(_ arguments: [String: Any] = [:]) -> String {
     // TODO: If `argument.1` is an array, wrap it in square brackets.
     // TODO: If `argument.1` is a dictionary, wrap it in curly brackets.
     let argumentsList = arguments.reduce([String]()) { value, argument in
@@ -50,8 +50,8 @@ internal func renderArgumentsList(_ arguments: [String: AnyObject] = [:]) -> Str
             //argumentValue = dictionaryToGraphQLObjectString(argumentValue as! NSDictionary)
         case is NSString:
             // The argument value should only be set if it's not a variable.
-            if argumentValue.substring(to: 1) != "$" {
-                argumentValue = "\"\(argumentValue)\"" as AnyObject
+            if (argumentValue as! NSString).substring(to: 1) != "$" {
+                argumentValue = "\"\(argumentValue)\""
             }
         default:
             break

@@ -13,7 +13,7 @@ extension GraphQLType {
 public protocol GraphQLOperation: GraphQLType {
     var type: GraphQL.OperationType { get }
     var name: String { get }
-    var arguments: [String: AnyObject] { get }
+    var arguments: [String: Any] { get }
     var selectionSet: GraphQL.SelectionSet { get }
 }
 
@@ -51,10 +51,10 @@ public struct GraphQL {
     
     public enum OperationType: String, CustomStringConvertible {
         // A write followed by a fetch
-        case Mutation = "mutation"
+        case mutation = "mutation"
         
         // A ready-only fetch
-        case Query = "query"
+        case query = "query"
         
         public var description: String {
             return rawValue
@@ -79,12 +79,12 @@ public struct GraphQL {
     }
     
     public struct Query: GraphQLOperation {
-        public let type: OperationType = .Query
+        public let type: OperationType = .query
         public let name: String
-        public let arguments: [String: AnyObject]
+        public let arguments: [String: Any]
         public let selectionSet: SelectionSet
         
-        public init(name: String = "", arguments: [String: AnyObject] = [:], selectionSet: SelectionSet) {
+        public init(name: String = "", arguments: [String: Any] = [:], selectionSet: SelectionSet) {
             self.name = name
             self.arguments = arguments
             self.selectionSet = selectionSet
@@ -92,12 +92,12 @@ public struct GraphQL {
     }
     
     public struct Mutation: GraphQLOperation {
-        public let type: OperationType = .Mutation
+        public let type: OperationType = .mutation
         public let name: String
-        public let arguments: [String: AnyObject]
+        public let arguments: [String: Any]
         public let selectionSet: SelectionSet
         
-        public init(name: String = "", arguments: [String: AnyObject] = [:], selectionSet: SelectionSet) {
+        public init(name: String = "", arguments: [String: Any] = [:], selectionSet: SelectionSet) {
             self.name = name
             self.arguments = arguments
             self.selectionSet = selectionSet
@@ -115,7 +115,7 @@ public struct GraphQL {
     public struct Field: GraphQLType {
         public let alias: String?
         public let name: String
-        public let arguments: [String: AnyObject]
+        public let arguments: [String: Any]
         
         public let selectionSet: SelectionSet
         
@@ -125,7 +125,7 @@ public struct GraphQL {
             return name.isEmpty
         }
 
-        public init(alias: String? = nil, name: String, arguments: [String: AnyObject] = [:], selectionSet: SelectionSet = [], fragments: [InlineFragment] = []) {
+        public init(alias: String? = nil, name: String, arguments: [String: Any] = [:], selectionSet: SelectionSet = [], fragments: [InlineFragment] = []) {
             for field in selectionSet {
                 assert(!field.isRootNode, "You cannot add a root field as a child of another field")
             }
@@ -150,9 +150,9 @@ public struct GraphQL {
     */
     public struct Directive {
         public let name: String
-        public let arguments: [String: AnyObject]
+        public let arguments: [String: Any]
         
-        public init(name: String, arguments: [String: AnyObject] = [:]) {
+        public init(name: String, arguments: [String: Any] = [:]) {
             self.name = name
             self.arguments = arguments
         }

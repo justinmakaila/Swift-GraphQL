@@ -15,9 +15,9 @@ extension GraphQLOperation {
     
     public var debugDescription: String {
         switch type {
-        case .Mutation:
+        case .mutation:
             return "GraphQL.Mutation(\(description))"
-        case .Query:
+        case .query:
             return "GraphQL.Query(\(description))"
         }
     }

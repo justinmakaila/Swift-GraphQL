@@ -33,7 +33,7 @@ extension GraphQL.Field: CustomStringConvertible, CustomDebugStringConvertible {
     
     public var description: String {
         var alias = ""
-        if let value = self.alias , !value.isEmpty {
+        if let value = self.alias, !value.isEmpty {
             alias = "\(value): "
         }
         
