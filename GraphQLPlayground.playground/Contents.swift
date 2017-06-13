@@ -44,7 +44,7 @@ query getParent($id: String!) {
     }
 }
 */
-let getParentQuery: GraphQL.Query = GraphQL.Query(name: "getParent", arguments: ["id": GraphQL.InputValueType.StringValue(true).description], selectionSet: [
+let getParentQuery: GraphQL.Query = GraphQL.Query(name: "getParent", arguments: ["id": GraphQL.InputValueType.stringValue(true).description], selectionSet: [
     GraphQL.Field(name: "parent", arguments: ["id": "$id"], selectionSet: [
         "id",
         "firstName",
@@ -119,7 +119,7 @@ query inlineFragmentNoType($expandedInfo: Boolean) {
     }
 }
 */
-let inlineFragmentNoTypeQuery: GraphQL.Query = GraphQL.Query(name: "inlineFragmentNoType", arguments: ["$expandedInfo": GraphQL.InputValueType.BooleanValue(false).description], selectionSet: [
+let inlineFragmentNoTypeQuery: GraphQL.Query = GraphQL.Query(name: "inlineFragmentNoType", arguments: ["$expandedInfo": GraphQL.InputValueType.booleanValue(false).description], selectionSet: [
     GraphQL.Field(name: "user", arguments: ["handle": "zuck"], selectionSet: [
         "id",
         "name",
@@ -145,7 +145,7 @@ query lifetimeActivity($studentId: String!) {
     }
 }
 */
-let lifetimeActivityQuery: GraphQL.Query = GraphQL.Query(name: "lifetimeActivity", arguments: ["$studentId": GraphQL.InputValueType.StringValue(true).description], selectionSet: [
+let lifetimeActivityQuery: GraphQL.Query = GraphQL.Query(name: "lifetimeActivity", arguments: ["$studentId": GraphQL.InputValueType.stringValue(true).description], selectionSet: [
     GraphQL.Field(name: "student", arguments: ["id": "$studentId"], selectionSet: [
         GraphQL.Field(alias: "lifetimeActivity", name: "activity", selectionSet: [
             "totalDuration",
